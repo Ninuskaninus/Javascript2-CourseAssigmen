@@ -20,6 +20,7 @@
                 class="form-control w-100 dropshadow-input"
                 id="loginEmail"
                 placeholder="name@example.com"
+                required
               />
               <label for="floatingInput">Email address</label>
             </div>
@@ -30,12 +31,13 @@
                 class="form-control dropshadow-input"
                 id="loginPassword"
                 placeholder="Password"
+                required
               />
               <label for="floatingPassword">Password</label>
             </div>
             <div class="container d-flex flex-column align-items-center w-100">
-            <button class="w-100 btn btn-lg btn-primary mt-4 login" id="login-btn">
-              Sign in
+            <button class="w-100 btn btn-lg btn-primary mt-4 login" id="login-btn" onclick="window.location='feed/index.html'">
+              Log in
             </button>
             </div>
           </form>
@@ -47,6 +49,7 @@
         </div>
       </div>
     </div>
-    <script src="js/login.js" type="modal"></script>
+    <script src="js/API/post/login.js" type="modal"></script>
+    <script src="js/API/post/access-token.js" type="modal"></script>
   </body>
 </html>
