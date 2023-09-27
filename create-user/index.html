@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <link rel="favicon" href="" />
+    <title>SassTrap | Log in</title>
+  </head>
+  <body class="bg-primary">
+    <div class="container min-vh-100 justify-content-center align-items-center w-100 d-flex">
+        <div class="min-vh-50 justify-content-center align-items-center d-flex flex-column">
+            <img class="p-4 w-75" src="/img/sasstrapp-logo.png" alt="">
+            <h4 class="text-white">Create a user</h4>
+            <form  
+          class="p-4 container w-75"
+          minlength="8"
+          id="registerForm">
+          <div class="form-floating mb-3">
+            <input 
+            type="text"
+            class="form-control w-100 dropshadow-input"
+            id="registerUsername"
+            placeholder="Username">
+            <label for="floatingInput">Username</label>
+          </div>
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control w-100 dropshadow-input"
+                id="registerEmail"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+              min-length="8"
+                type="password"
+                class="form-control dropshadow-input"
+                id="registerPassword"
+                placeholder="Password"
+              />
+              <label for="floatingPassword">Password</label>
+            </div>
+            <div class="container d-flex flex-column align-items-center w-100">
+            <button class="w-100 btn btn-lg btn-primary mt-4 login" id="create-user-btn">
+              Create user
+            </button>
+            <a class="mt-4 text-secondary" href="/index.html">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="/js/login.js" type="module"></script>
+  </body>
+</html>
