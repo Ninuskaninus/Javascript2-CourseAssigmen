@@ -1,4 +1,5 @@
-import { users } from "/js/users/users.js";
+import { fetchUsersData } from "/js/users/users.js";
+const users = await fetchUsersData();
 import { createFeedCard } from "/js/design/feed.js";
 
 

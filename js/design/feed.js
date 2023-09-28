@@ -43,7 +43,7 @@ uploadHeadText.placeholder = "What's on your mind?";
 uploadHead.appendChild(uploadHeadText);
 
 const uploadBody = document.createElement("div");
-uploadBody.classList.add("card-header", "dropshadow");
+uploadBody.classList.add("card-header",);
 uploadContainer.appendChild(uploadBody);
 
 const uploadIconImage = document.createElement("img");
@@ -154,7 +154,7 @@ export function createFeedCard(users) {
 
   const cardProfileName = document.createElement("h5");
   cardProfileName.classList.add("mb-0");
-  cardProfileName.innerText = users.username;
+  cardProfileName.innerText = users.title;
   cardProfileInfo.appendChild(cardProfileName);
 
   const cardProfileUsername = document.createElement("p");
@@ -200,6 +200,7 @@ export function createFeedCard(users) {
   likebutton.src = "/img/likebutton.png";
   likebutton.classList.add("m-2", "me-0", "response-icon");
   likebutton.style.cursor = "pointer";
+  likebutton.id = "likebutton" + users.id;
   likebutton.addEventListener("click", () => {
     if (likebutton.src.includes("likebutton.png")) {
       likebutton.src = "/img/likebuttonfull.png";

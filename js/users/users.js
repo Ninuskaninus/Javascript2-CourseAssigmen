@@ -32,7 +32,7 @@ export function fetchUsersData() {
             "December",
           ];
 
-          // Format the dates in the desired format
+          // Format the dates as 'DD.MM.YYYY'
           const formattedCreatedDate = `${createdDate.getDate()}.${months[createdDate.getMonth()]} ${createdDate.getFullYear()}`;
           const formattedUpdatedDate = `${updatedDate.getDate()}.${months[updatedDate.getMonth()]} ${updatedDate.getFullYear()}`;
 
@@ -50,8 +50,6 @@ export function fetchUsersData() {
             username: post._author?.name,
           };
         });
-
-        console.log("API response:", users);
 
         return users;
       } else {

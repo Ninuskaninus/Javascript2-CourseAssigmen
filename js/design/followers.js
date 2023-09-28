@@ -1,4 +1,5 @@
-import { users } from "/js/users/users.js";
+/* import { fetchUsersData } from "/js/users/users.js";
+const user  = await fetchUsersData();
 
 //Followers
 const followersContainer = document.getElementById("followers-container");
@@ -22,7 +23,7 @@ const followesIconContainer = document.createElement("div");
 followesIconContainer.classList.add("container", "row", "w-100");
 followersCard.appendChild(followesIconContainer);
 
-users.forEach((person) => {
+user.forEach((user) => {
   const followersIcon = document.createElement("img");
   followersIcon.classList.add(
     "rounded-circle",
@@ -34,7 +35,7 @@ users.forEach((person) => {
   followersIcon.style.width = "30px";
   followersIcon.style.height = "30px";
   followersIcon.style.objectFit = "cover";
-  followersIcon.src = person.profilePicture;
+  followersIcon.src = user.profilePicture;
   followesIconContainer.appendChild(followersIcon);
 });
 
@@ -75,3 +76,4 @@ users.forEach((person) => {
   followingIcon.src = person.profilePicture;
   followingIconContainer.appendChild(followingIcon);
 });
+ */
