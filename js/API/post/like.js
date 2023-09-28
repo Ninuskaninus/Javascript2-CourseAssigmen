@@ -11,12 +11,7 @@ async function handleLikeButtonClick(postId) {
       
       // Update the UI to reflect the new like count
       const likeCountElement = document.getElementById(`likebutton${postId}`);
-      console.log(likeCountElement);
-      if (likeCountElement) {
-        likeCountElement.innerText = post.likes;
-      }
-  
-      // Send a PUT request to update the post's likes on the server
+
       try {
         const response = await fetch(`https://api.noroff.dev/api/v1/social/posts/${postId}`, {
           method: 'PUT',
