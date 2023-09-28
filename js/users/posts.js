@@ -32,9 +32,13 @@ export function fetchUsersData() {
             "December",
           ];
 
-          // Format the dates as 'DD.MM.YYYY'
-          const formattedCreatedDate = `${createdDate.getDate()}.${months[createdDate.getMonth()]} ${createdDate.getFullYear()}`;
-          const formattedUpdatedDate = `${updatedDate.getDate()}.${months[updatedDate.getMonth()]} ${updatedDate.getFullYear()}`;
+          // Format the dates in the desired format
+          const formattedCreatedDate = `${createdDate.getDate()}.${
+            months[createdDate.getMonth()]
+          } ${createdDate.getFullYear()}`;
+          const formattedUpdatedDate = `${updatedDate.getDate()}.${
+            months[updatedDate.getMonth()]
+          } ${updatedDate.getFullYear()}`;
 
           return {
             title: post.title,
@@ -50,7 +54,6 @@ export function fetchUsersData() {
             username: post._author?.name,
           };
         });
-
         return users;
       } else {
         console.error("API response is not an array of posts.");

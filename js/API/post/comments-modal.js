@@ -1,7 +1,8 @@
-import { fetchUsersData } from "/js/users/users.js";
+import { fetchUsersData } from "/js/users/posts.js";
 const users = await fetchUsersData();
 import { createFeedCard } from "/js/design/feed.js";
-
+import { fetchMyProfile } from "/js/users/myProfile.js";
+const myProfile = await fetchMyProfile();
 
 const commentModuleContainer = document.getElementById("comment-modal");
 commentModuleContainer.addEventListener("click", (e) => {
@@ -16,10 +17,9 @@ moduleContent.classList.add("module-content");
 moduleContent.id = "module-content" + users[0].id;
 commentModuleContainer.appendChild(moduleContent);
 
-const user = users[0];
+const user = users[1];
 const feedCard = createFeedCard(user);
 moduleContent.appendChild(feedCard);
-
 
 // COMMENTS
 const commentContainer = document.createElement("div");
@@ -71,7 +71,7 @@ leaveCommentContainer.appendChild(leaveComment);
 
 const leaveCommentProfilePic = document.createElement("div");
 leaveCommentProfilePic.classList.add("leave-comment-img");
-leaveCommentProfilePic.style.backgroundImage = `url(${users[0].profilePicture})`;
+leaveCommentProfilePic.style.backgroundImage = `url(${myProfile.avatar})`;
 leaveComment.appendChild(leaveCommentProfilePic);
 
 const leaveCommentInput = document.createElement("input");
@@ -83,9 +83,3 @@ const leaveCommentButton = document.createElement("img");
 leaveCommentButton.classList.add("leave-comment-button");
 leaveCommentButton.src = "/img/send.png";
 leaveComment.appendChild(leaveCommentButton);
-
-
-
-
-
-

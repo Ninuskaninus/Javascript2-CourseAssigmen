@@ -1,29 +1,22 @@
-import { fetchUsersData } from "/js/users/users.js";
-const users = await fetchUsersData();
+import { fetchMyProfile } from "/js/users/myProfile.js";
+const myProfile = await fetchMyProfile();
 
 //Header
-const profilePicHeader = document.getElementById("profile-pic-header");
-profilePicHeader.src = users[0].profilePicture;
-if (profilePicHeader.profilePicture && users.profilePicture.trim() !== "") {
-  profilePicHeader.src = users.profilePicture;
-} else {
-  profilePicHeader.src = "/img/profile-placeholder.png";
-}
+const feedHeadImg = document.getElementById("head-img");
+feedHeadImg.style.backgroundImage = `url(${myProfile.banner})`;
 
 //Heading and profile
 const profilePic = document.getElementById("profile-pic");
-profilePic.src = users[0].profilePicture;
-if (profilePic.profilePicture && users.profilePicture.trim() !== "") {
-  profilePic.src = users.profilePicture;
+profilePic.src = myProfile.avatar;
+if (myProfile.avatar && myProfile.avatar.trim() !== "") {
+  myProfile.src = myProfile.avatar;
 } else {
   profilePic.src = "/img/profile-placeholder.png";
 }
 
 const profileName = document.getElementById("full-name");
 profileName.classList.add("text-primary");
-profileName.innerText = users[0].username;
-
-
+profileName.innerText = myProfile.name;
 
 const nameContainer = document.getElementById("name-container");
 if (window.innerWidth < 577) {
@@ -31,3 +24,8 @@ if (window.innerWidth < 577) {
 } else {
   nameContainer.classList.add("mt-5");
 }
+
+const followers = document.getElementById("followers");
+followers.innerText = myProfile.followers;
+const following = document.getElementById("following");
+following.innerText = myProfile.following;

@@ -1,4 +1,4 @@
-/* import { fetchUsersData } from "/js/users/users.js";
+/* import { fetchUsersData } from "/js/users/posts.js";
 const user  = await fetchUsersData();
 
 //Followers

@@ -1,4 +1,4 @@
-import { users } from "/js/users/users.js";
+/* import { users } from "/js/users/posts.js";
 
 const profileContainer = document.getElementById("profile-container");
 const profileHead = document.createElement("div");
@@ -21,3 +21,4 @@ users.forEach((person) => {
   profileImg.src = person.pictureUpload;
   profileImgContainer.appendChild(profileImg);
 });
+ */

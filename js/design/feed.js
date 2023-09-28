@@ -1,10 +1,12 @@
-import { fetchUsersData } from "/js/users/users.js";
-const users = await fetchUsersData();
+import { fetchUsersData } from "/js/users/posts.js";
+const posts = await fetchUsersData();
+import { fetchProfileData } from "/js/users/profiles.js";
+const profile = await fetchProfileData();
+import { fetchMyProfile } from "/js/users/myProfile.js";
+const myProfile = await fetchMyProfile();
 
 //Containers
 const feedContainer = document.getElementById("feed-container");
-const feedHeadImg = document.getElementById("head-img");
-feedHeadImg.style.backgroundImage = `url(${users[0].pictureUpload})`;
 
 //Upload
 const uploadContainer = document.createElement("div");
@@ -17,13 +19,12 @@ uploadContainer.appendChild(uploadHead);
 
 const uploadProfilepic = document.createElement("img");
 uploadProfilepic.classList.add("rounded-circle", "me-4", "border");
-uploadProfilepic.src = users.profilePicture;
-if (uploadProfilepic.profilePicture && users.profilePicture.trim() !== "") {
-  uploadProfilepic.src = users.profilePicture;
+uploadProfilepic.src = myProfile.avatar;
+if (myProfile.avatar && myProfile.avatar.trim() !== "") {
+  myProfile.src = myProfile.avatar;
 } else {
   uploadProfilepic.src = "/img/profile-placeholder.png";
 }
-
 
 uploadProfilepic.style.width = "50px";
 uploadProfilepic.style.height = "50px";
@@ -43,7 +44,7 @@ uploadHeadText.placeholder = "What's on your mind?";
 uploadHead.appendChild(uploadHeadText);
 
 const uploadBody = document.createElement("div");
-uploadBody.classList.add("card-header",);
+uploadBody.classList.add("card-header");
 uploadContainer.appendChild(uploadBody);
 
 const uploadIconImage = document.createElement("img");
@@ -124,9 +125,10 @@ sortBtnOldest.innerText = "Sort by oldest";
 sortRow.appendChild(sortBtnOldest);
 
 //Feed
-export function createFeedCard(users) {
+export function createFeedCard(posts) {
   const feedCard = document.createElement("div");
   feedCard.classList.add("card", "w-100", "mb-4");
+  feedCard.id = posts.id;
 
   const cardTextTop = document.createElement("div");
   cardTextTop.classList.add("card-text", "row", "p-4");
@@ -140,10 +142,10 @@ export function createFeedCard(users) {
     "card-profile",
     "border"
   );
-  cardProfilePic.src = users.profilePicture;
+  cardProfilePic.src = profile.avatar;
   cardTextTop.appendChild(cardProfilePic);
-  if (users.profilePicture && users.profilePicture.trim() !== "") {
-    cardProfilePic.src = users.profilePicture;
+  if (profile.avatar && profile.avatar.trim() !== "") {
+    cardProfilePic.src = profile.avatar;
   } else {
     cardProfilePic.src = "/img/profile-placeholder.png";
   }
@@ -154,17 +156,17 @@ export function createFeedCard(users) {
 
   const cardProfileName = document.createElement("h5");
   cardProfileName.classList.add("mb-0");
-  cardProfileName.innerText = users.title;
+  cardProfileName.innerText = profile.name;
   cardProfileInfo.appendChild(cardProfileName);
 
   const cardProfileUsername = document.createElement("p");
   cardProfileUsername.classList.add("nametag");
-  cardProfileUsername.innerText = users.updated;
+  cardProfileUsername.innerText = posts.updated;
   cardProfileInfo.appendChild(cardProfileUsername);
 
   const cardImage = document.createElement("img");
   cardImage.classList.add("card-img-top", "feed-image", "dropshadow");
-  cardImage.src = users.pictureUpload;
+  cardImage.src = posts.pictureUpload;
   cardImage.alt = "Feed image";
   feedCard.appendChild(cardImage);
 
@@ -174,16 +176,25 @@ export function createFeedCard(users) {
 
   const cardTextBottomContent = document.createElement("p");
   cardTextBottomContent.classList.add("card-text");
-  cardTextBottomContent.innerText = users.body;
+  cardTextBottomContent.innerText = posts.body;
   cardTextBottom.appendChild(cardTextBottomContent);
 
-  if (users.pictureUpload === "" || users.pictureUpload === null) {
+  if (posts.pictureUpload === "" || posts.pictureUpload === null) {
     cardImage.style.display = "none";
     cardTextBottom.classList.remove("mt-4");
     cardTextTop.classList.add("pb-0");
   } else {
-    cardProfilePic.style.display = "block";
-    cardTextBottom.classList.add("mt-4");
+    var img = new Image();
+    img.src = posts.pictureUpload;
+    img.onload = function () {
+      cardProfilePic.style.display = "block";
+      cardTextBottom.classList.add("mt-4");
+    };
+    img.onerror = function () {
+      cardProfilePic.style.display = "none";
+      cardTextBottom.classList.remove("mt-4");
+      cardTextTop.classList.add("pb-0");
+    };
   }
 
   const cardTextBottomIcons = document.createElement("div");
@@ -200,7 +211,7 @@ export function createFeedCard(users) {
   likebutton.src = "/img/likebutton.png";
   likebutton.classList.add("m-2", "me-0", "response-icon");
   likebutton.style.cursor = "pointer";
-  likebutton.id = "likebutton" + users.id;
+  likebutton.id = "likebutton" + posts.id;
   likebutton.addEventListener("click", () => {
     if (likebutton.src.includes("likebutton.png")) {
       likebutton.src = "/img/likebuttonfull.png";
@@ -210,17 +221,17 @@ export function createFeedCard(users) {
   });
 
   const likeCounter = document.createElement("p");
-  likeCounter.innerText = users.likes;
+  likeCounter.innerText = posts.likes;
   likeCounter.classList.add("m-2", "p-0");
 
   const commentbutton = document.createElement("img");
   commentbutton.src = "/img/commentbutton.png";
   commentbutton.classList.add("m-2", "me-0", "response-icon");
   commentbutton.style.cursor = "pointer";
-  commentbutton.id = "commentbutton" + users.id;
+  commentbutton.id = "commentbutton" + posts.id;
 
   const commentCounter = document.createElement("p");
-  commentCounter.innerText = users.comments;
+  commentCounter.innerText = posts.comments;
   commentCounter.classList.add("m-2", "p-0");
 
   cardTextBottomIcons.appendChild(likebutton);
@@ -239,7 +250,7 @@ export function createFeedCard(users) {
     "row"
   );
 
-  if (users.pictureUpload === "") {
+  if (posts.pictureUpload === "") {
     cardImage.style.display = "none";
     cardTextBottom.classList.remove("mt-4");
     cardTextTop.classList.add("pb-0");
@@ -251,9 +262,7 @@ export function createFeedCard(users) {
   return feedCard;
 }
 
-users.forEach((user) => {
-  const feedCard = createFeedCard(user);
+posts.forEach((post) => {
+  const feedCard = createFeedCard(post);
   feedContainer.appendChild(feedCard);
 });
-
-
