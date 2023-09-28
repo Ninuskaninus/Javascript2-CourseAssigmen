@@ -1,4 +1,6 @@
 import { users } from "/js/users/users.js";
+import { createFeedCard } from "/js/design/feed.js";
+
 
 const commentModuleContainer = document.getElementById("comment-modal");
 commentModuleContainer.addEventListener("click", (e) => {
@@ -6,35 +8,19 @@ commentModuleContainer.addEventListener("click", (e) => {
     commentModuleContainer.style.display = "none";
   }
 });
+
+// POST
 const moduleContent = document.createElement("div");
 moduleContent.classList.add("module-content");
 moduleContent.id = "module-content" + users[0].id;
 commentModuleContainer.appendChild(moduleContent);
 
-const moduleProfilePicContainer = document.createElement("div");
-moduleProfilePicContainer.classList.add("module-profile-pic");
-moduleProfilePicContainer.style.backgroundImage = `url(${users[0].profilePicture})`;
-const moduleImageContainer = document.createElement("div");
-moduleImageContainer.classList.add("image-container");
-moduleImageContainer.style.backgroundImage = `url(${users[0].pictureUpload})`;
+const user = users[0];
+const feedCard = createFeedCard(user);
+moduleContent.appendChild(feedCard);
 
-if (moduleImageContainer.style.backgroundImage === "" || moduleImageContainer.style.backgroundImage === "none") {
-  moduleImageContainer.style.display = "none";
-}
-const moduleDescriptionContainer = document.createElement("div");
-const imgDescription = document.createElement("p");
-imgDescription.classList.add("m-0");
-imgDescription.innerText = users[0].description;
-moduleDescriptionContainer.appendChild(imgDescription);
 
-moduleDescriptionContainer.classList.add("description-container", "card");
-const moduleDescription = document.createElement("p");
-moduleDescription.classList.add("m-0");
-
-moduleContent.appendChild(moduleProfilePicContainer);
-moduleContent.appendChild(moduleImageContainer);
-moduleContent.appendChild(moduleDescriptionContainer);
-
+// COMMENTS
 const commentContainer = document.createElement("div");
 commentContainer.classList.add("comment-container");
 moduleContent.appendChild(commentContainer);
@@ -72,6 +58,8 @@ commentText.innerText = "This is a comment on a post! This is cool!";
 commentContent.appendChild(commentText);
 comment.appendChild(commentContent);
 
+// Leave comment
+
 const leaveCommentContainer = document.createElement("div");
 leaveCommentContainer.classList.add("leave-comment-container", "card");
 moduleContent.appendChild(leaveCommentContainer);
@@ -94,6 +82,7 @@ const leaveCommentButton = document.createElement("img");
 leaveCommentButton.classList.add("leave-comment-button");
 leaveCommentButton.src = "/img/send.png";
 leaveComment.appendChild(leaveCommentButton);
+
 
 
 

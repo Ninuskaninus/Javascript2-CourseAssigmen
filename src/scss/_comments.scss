@@ -1,22 +1,37 @@
 .comment-module-container {
   width: 100%;
-  height: 100%;
-  position: absolute;
+  min-height: 100vh;
+  height: auto; /* Change to auto */
   position: fixed;
   background-color: rgba(0, 0, 0, 0.466);
   top: 0;
-  display: flex;
   flex-direction: column;
   justify-content: baseline;
   align-items: center;
   padding-top: 50px;
   padding-bottom: 150px;
+  display: none;
+  overflow: hidden; /* Hide overflow outside the modal */
 }
 
 .module-content {
-  height: fit-content;
-  min-height: 100%;
-  overflow: scroll;
+  max-height: 100vh; /* Set a maximum height for the content */
+  overflow: auto; /* Enable scrolling for the content */
+}
+
+/* Hide scrollbar in WebKit-based browsers */
+.comment-module-container ::-webkit-scrollbar {
+  width: 0.5rem; /* Adjust the width as needed */
+}
+
+.comment-module-container ::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Hide the thumb */
+}
+
+/* Hide scrollbar in Firefox */
+.comment-module-container {
+  scrollbar-width: thin; /* "thin" or "none" to hide the scrollbar */
+  scrollbar-color: transparent transparent; /* Hide the thumb and track */
 }
 
 .image-container {

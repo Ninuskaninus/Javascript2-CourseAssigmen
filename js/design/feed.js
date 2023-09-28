@@ -1,4 +1,5 @@
-import { users } from "/js/users/users.js";
+import { fetchUsersData } from "/js/users/users.js";
+const users = await fetchUsersData();
 
 //Containers
 const feedContainer = document.getElementById("feed-container");
@@ -16,7 +17,14 @@ uploadContainer.appendChild(uploadHead);
 
 const uploadProfilepic = document.createElement("img");
 uploadProfilepic.classList.add("rounded-circle", "me-4", "border");
-uploadProfilepic.src = users[0].profilePicture;
+uploadProfilepic.src = users.profilePicture;
+if (uploadProfilepic.profilePicture && users.profilePicture.trim() !== "") {
+  uploadProfilepic.src = users.profilePicture;
+} else {
+  uploadProfilepic.src = "/img/profile-placeholder.png";
+}
+
+
 uploadProfilepic.style.width = "50px";
 uploadProfilepic.style.height = "50px";
 uploadProfilepic.style.objectFit = "cover";
@@ -116,10 +124,9 @@ sortBtnOldest.innerText = "Sort by oldest";
 sortRow.appendChild(sortBtnOldest);
 
 //Feed
-users.forEach((user) => {
+export function createFeedCard(users) {
   const feedCard = document.createElement("div");
   feedCard.classList.add("card", "w-100", "mb-4");
-  feedContainer.appendChild(feedCard);
 
   const cardTextTop = document.createElement("div");
   cardTextTop.classList.add("card-text", "row", "p-4");
@@ -133,8 +140,13 @@ users.forEach((user) => {
     "card-profile",
     "border"
   );
-  cardProfilePic.src = user.profilePicture;
+  cardProfilePic.src = users.profilePicture;
   cardTextTop.appendChild(cardProfilePic);
+  if (users.profilePicture && users.profilePicture.trim() !== "") {
+    cardProfilePic.src = users.profilePicture;
+  } else {
+    cardProfilePic.src = "/img/profile-placeholder.png";
+  }
 
   const cardProfileInfo = document.createElement("div");
   cardProfileInfo.classList.add("col-9");
@@ -142,17 +154,17 @@ users.forEach((user) => {
 
   const cardProfileName = document.createElement("h5");
   cardProfileName.classList.add("mb-0");
-  cardProfileName.innerText = user.name;
+  cardProfileName.innerText = users.username;
   cardProfileInfo.appendChild(cardProfileName);
 
   const cardProfileUsername = document.createElement("p");
   cardProfileUsername.classList.add("nametag");
-  cardProfileUsername.innerText = user.username;
+  cardProfileUsername.innerText = users.updated;
   cardProfileInfo.appendChild(cardProfileUsername);
 
   const cardImage = document.createElement("img");
   cardImage.classList.add("card-img-top", "feed-image", "dropshadow");
-  cardImage.src = user.pictureUpload;
+  cardImage.src = users.pictureUpload;
   cardImage.alt = "Feed image";
   feedCard.appendChild(cardImage);
 
@@ -162,10 +174,10 @@ users.forEach((user) => {
 
   const cardTextBottomContent = document.createElement("p");
   cardTextBottomContent.classList.add("card-text");
-  cardTextBottomContent.innerText = user.description;
+  cardTextBottomContent.innerText = users.body;
   cardTextBottom.appendChild(cardTextBottomContent);
 
-  if (user.pictureUpload === "") {
+  if (users.pictureUpload === "" || users.pictureUpload === null) {
     cardImage.style.display = "none";
     cardTextBottom.classList.remove("mt-4");
     cardTextTop.classList.add("pb-0");
@@ -197,17 +209,17 @@ users.forEach((user) => {
   });
 
   const likeCounter = document.createElement("p");
-  likeCounter.innerText = " 35";
+  likeCounter.innerText = users.likes;
   likeCounter.classList.add("m-2", "p-0");
 
   const commentbutton = document.createElement("img");
   commentbutton.src = "/img/commentbutton.png";
   commentbutton.classList.add("m-2", "me-0", "response-icon");
   commentbutton.style.cursor = "pointer";
-  commentbutton.id = "commentbutton" + user.id;
+  commentbutton.id = "commentbutton" + users.id;
 
   const commentCounter = document.createElement("p");
-  commentCounter.innerText = " 35";
+  commentCounter.innerText = users.comments;
   commentCounter.classList.add("m-2", "p-0");
 
   cardTextBottomIcons.appendChild(likebutton);
@@ -226,7 +238,7 @@ users.forEach((user) => {
     "row"
   );
 
-  if (cardImage === "") {
+  if (users.pictureUpload === "") {
     cardImage.style.display = "none";
     cardTextBottom.classList.remove("mt-4");
     cardTextTop.classList.add("pb-0");
@@ -234,4 +246,13 @@ users.forEach((user) => {
     cardProfilePic.style.display = "block";
     cardTextBottom.classList.add("mt-4");
   }
+
+  return feedCard;
+}
+
+users.forEach((user) => {
+  const feedCard = createFeedCard(user);
+  feedContainer.appendChild(feedCard);
 });
+
+
