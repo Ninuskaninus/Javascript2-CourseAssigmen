@@ -12056,7 +12056,6 @@ header {
   align-items: center;
   padding-top: 50px;
   padding-bottom: 150px;
-  display: none;
 }
 
 .module-content {
@@ -12157,6 +12156,7 @@ header {
   justify-content: baseline;
   align-items: center;
   margin-top: 20px;
+  margin-bottom: 50px;
   background-color: #fff;
 }
 
@@ -12188,6 +12188,7 @@ header {
 .leave-comment-button {
   max-width: 30px;
   max-height: 30px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=index.css.map */

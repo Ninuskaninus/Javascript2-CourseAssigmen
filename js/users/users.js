@@ -4,9 +4,9 @@ const users = [
     username: "@ninuskaninus",
     profilePicture:
       "https://images.unsplash.com/photo-1687360440886-f220f137a16c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-    /*     pictureUpload:
-      "https://images.unsplash.com/photo-1512641406448-6574e777bec6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
- */ description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+     pictureUpload:
+      "",
+ description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     id: 1,
   },
   {

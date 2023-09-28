@@ -8,6 +8,7 @@ commentModuleContainer.addEventListener("click", (e) => {
 });
 const moduleContent = document.createElement("div");
 moduleContent.classList.add("module-content");
+moduleContent.id = "module-content" + users[0].id;
 commentModuleContainer.appendChild(moduleContent);
 
 const moduleProfilePicContainer = document.createElement("div");
@@ -16,8 +17,9 @@ moduleProfilePicContainer.style.backgroundImage = `url(${users[0].profilePicture
 const moduleImageContainer = document.createElement("div");
 moduleImageContainer.classList.add("image-container");
 moduleImageContainer.style.backgroundImage = `url(${users[0].pictureUpload})`;
-if (users.pictureUpload === "") {
-  moduleImageContainer.style.height = "0px";
+
+if (moduleImageContainer.style.backgroundImage === "" || moduleImageContainer.style.backgroundImage === "none") {
+  moduleImageContainer.style.display = "none";
 }
 const moduleDescriptionContainer = document.createElement("div");
 const imgDescription = document.createElement("p");
@@ -92,3 +94,8 @@ const leaveCommentButton = document.createElement("img");
 leaveCommentButton.classList.add("leave-comment-button");
 leaveCommentButton.src = "/img/send.png";
 leaveComment.appendChild(leaveCommentButton);
+
+
+
+
+
