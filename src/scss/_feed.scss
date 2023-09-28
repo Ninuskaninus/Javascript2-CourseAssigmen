@@ -81,7 +81,7 @@ header {
   }
 }
 
-.submit-btn{
+.submit-btn {
   background-color: $pink;
   color: $white;
   border: none;
@@ -91,7 +91,7 @@ header {
   }
 }
 
-.comment-container{
+.comment-container {
   background-color: $white;
   border-radius: 20px;
   &:focus {
@@ -99,18 +99,32 @@ header {
   }
 }
 
-.comment-input{
+.comment-input {
   border: none;
   &:focus {
     outline: none;
   }
 }
 
-.comment-btn{
+.comment-btn {
   background-color: $pink;
   color: $white;
   border: none;
   &:focus {
     outline: none;
   }
+}
+
+.response-icon {
+  max-width: 30px;
+  max-height: 30px;
+  object-fit: cover;
+}
+
+.icons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
+  margin: 0px;
 }

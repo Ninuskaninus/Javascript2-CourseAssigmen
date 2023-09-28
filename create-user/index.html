@@ -23,6 +23,9 @@
             id="registerUsername"
             placeholder="Username">
             <label for="floatingInput">Username</label>
+            <div id="errorUsername" class="p-2 errorUsername">
+              <p class="text-warning">Only noroff.no emails are allowed to register</p>
+            </div>
           </div>
             <div class="form-floating mb-3">
               <input
@@ -32,6 +35,9 @@
                 placeholder="name@example.com"
               />
               <label for="floatingInput">Email address</label>
+              <div id="errorEmail" class="p-2 errorUsername">
+                <p class="text-warning">Only noroff.no emails are allowed to register</p>
+              </div>
             </div>
             <div class="form-floating mb-3">
               <input
@@ -42,6 +48,9 @@
                 placeholder="Password"
               />
               <label for="floatingPassword">Password</label>
+              <div id="errorPassword" class="p-2 errorUsername">
+                <p class="text-warning">Only noroff.no emails are allowed to register</p>
+              </div>
             </div>
             <div class="container d-flex flex-column align-items-center w-100">
             <button class="w-100 btn btn-lg btn-primary mt-4 login" id="create-user-btn">
@@ -53,6 +62,7 @@
         </div>
       </div>
     </div>
-    <script src="/js/login.js" type="module"></script>
+    <script src="/js/API/post/register.js" type="module"></script>
+    <script src="/js/API/post/access-token.js" type="module"></script>
   </body>
 </html>

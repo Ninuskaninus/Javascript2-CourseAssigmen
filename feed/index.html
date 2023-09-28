@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../dist/css/index.css" />
+    <!--     <script src="/js/API/post/access-token.js"></script> -->
     <title>SassTrap | Feed</title>
   </head>
   <body class="feed-body">
@@ -60,7 +61,8 @@
     <div class="container-sm p-3 pt-0" id="content-container">
       <div id="header-container">
         <div
-          class="container w-100 p-0 m-0 feed-head d-flex justify-content-center position-relative" id="head-img"
+          class="container w-100 p-0 m-0 feed-head d-flex justify-content-center position-relative"
+          id="head-img"
         >
           <img
             src=""
@@ -121,9 +123,11 @@
         <div class="container w-100 p-0" id="feed-container"></div>
       </div>
     </div>
-    <script type="module" src="/js/head.js"></script>
-    <script type="module" src="/js/feed.js"></script>
-    <script type="module" src="/js/followers.js"></script>
-    <script type="module" src="/js/users.js"></script>
+    <div class="comment-module-container" id="comment-modal"></div>
+    <script type="module" src="/js/API/post/comments-modal.js"></script>
+    <script type="module" src="/js/design/head.js"></script>
+    <script type="module" src="/js/design/feed.js"></script>
+    <script type="module" src="/js/design/followers.js"></script>
+    <script type="module" src="/js/users/users.js"></script>
   </body>
 </html>
