@@ -1,8 +1,6 @@
-import { fetchUsersData } from "/js/users/posts.js";
-const posts = await fetchUsersData();
-import { fetchProfileData } from "/js/users/profiles.js";
-const profile = await fetchProfileData();
-import { fetchMyProfile } from "/js/users/myProfile.js";
+import { fetchAllPosts } from "/js/allUsers/allPosts.js";
+const allPosts = await fetchAllPosts();
+import { fetchMyProfile } from "/js/myUser/myProfile.js";
 const myProfile = await fetchMyProfile();
 
 //Containers
@@ -125,10 +123,10 @@ sortBtnOldest.innerText = "Sort by oldest";
 sortRow.appendChild(sortBtnOldest);
 
 //Feed
-export function createFeedCard(posts) {
+export function createFeedCard(allPosts) {
   const feedCard = document.createElement("div");
   feedCard.classList.add("card", "w-100", "mb-4");
-  feedCard.id = posts.id;
+  feedCard.id = allPosts.id;
 
   const cardTextTop = document.createElement("div");
   cardTextTop.classList.add("card-text", "row", "p-4");
@@ -142,10 +140,10 @@ export function createFeedCard(posts) {
     "card-profile",
     "border"
   );
-  cardProfilePic.src = profile.avatar;
+  cardProfilePic.src = allPosts.avatar;
   cardTextTop.appendChild(cardProfilePic);
-  if (profile.avatar && profile.avatar.trim() !== "") {
-    cardProfilePic.src = profile.avatar;
+  if (allPosts.avatar && allPosts.avatar.trim() !== "") {
+    cardProfilePic.src = allPosts.avatar;
   } else {
     cardProfilePic.src = "/img/profile-placeholder.png";
   }
@@ -156,17 +154,17 @@ export function createFeedCard(posts) {
 
   const cardProfileName = document.createElement("h5");
   cardProfileName.classList.add("mb-0");
-  cardProfileName.innerText = profile.name;
+  cardProfileName.innerText = allPosts.username;
   cardProfileInfo.appendChild(cardProfileName);
 
   const cardProfileUsername = document.createElement("p");
   cardProfileUsername.classList.add("nametag");
-  cardProfileUsername.innerText = posts.updated;
+  cardProfileUsername.innerText = allPosts.updated;
   cardProfileInfo.appendChild(cardProfileUsername);
 
   const cardImage = document.createElement("img");
   cardImage.classList.add("card-img-top", "feed-image", "dropshadow");
-  cardImage.src = posts.pictureUpload;
+  cardImage.src = allPosts.pictureUpload;
   cardImage.alt = "Feed image";
   feedCard.appendChild(cardImage);
 
@@ -176,16 +174,16 @@ export function createFeedCard(posts) {
 
   const cardTextBottomContent = document.createElement("p");
   cardTextBottomContent.classList.add("card-text");
-  cardTextBottomContent.innerText = posts.body;
+  cardTextBottomContent.innerText = allPosts.body;
   cardTextBottom.appendChild(cardTextBottomContent);
 
-  if (posts.pictureUpload === "" || posts.pictureUpload === null) {
+  if (allPosts.pictureUpload === "" || allPosts.pictureUpload === null) {
     cardImage.style.display = "none";
     cardTextBottom.classList.remove("mt-4");
     cardTextTop.classList.add("pb-0");
   } else {
     var img = new Image();
-    img.src = posts.pictureUpload;
+    img.src = allPosts.pictureUpload;
     img.onload = function () {
       cardProfilePic.style.display = "block";
       cardTextBottom.classList.add("mt-4");
@@ -211,7 +209,7 @@ export function createFeedCard(posts) {
   likebutton.src = "/img/likebutton.png";
   likebutton.classList.add("m-2", "me-0", "response-icon");
   likebutton.style.cursor = "pointer";
-  likebutton.id = "likebutton" + posts.id;
+  likebutton.id = "likebutton" + allPosts.id;
   likebutton.addEventListener("click", () => {
     if (likebutton.src.includes("likebutton.png")) {
       likebutton.src = "/img/likebuttonfull.png";
@@ -221,17 +219,17 @@ export function createFeedCard(posts) {
   });
 
   const likeCounter = document.createElement("p");
-  likeCounter.innerText = posts.likes;
+  likeCounter.innerText = allPosts.likes;
   likeCounter.classList.add("m-2", "p-0");
 
   const commentbutton = document.createElement("img");
   commentbutton.src = "/img/commentbutton.png";
   commentbutton.classList.add("m-2", "me-0", "response-icon");
   commentbutton.style.cursor = "pointer";
-  commentbutton.id = "commentbutton" + posts.id;
+  commentbutton.id = "commentbutton" + allPosts.id;
 
   const commentCounter = document.createElement("p");
-  commentCounter.innerText = posts.comments;
+  commentCounter.innerText = allPosts.comments;
   commentCounter.classList.add("m-2", "p-0");
 
   cardTextBottomIcons.appendChild(likebutton);
@@ -250,7 +248,7 @@ export function createFeedCard(posts) {
     "row"
   );
 
-  if (posts.pictureUpload === "") {
+  if (allPosts.pictureUpload === "") {
     cardImage.style.display = "none";
     cardTextBottom.classList.remove("mt-4");
     cardTextTop.classList.add("pb-0");
@@ -262,7 +260,7 @@ export function createFeedCard(posts) {
   return feedCard;
 }
 
-posts.forEach((post) => {
+allPosts.forEach((post) => {
   const feedCard = createFeedCard(post);
   feedContainer.appendChild(feedCard);
 });

@@ -1,7 +1,7 @@
-const apiURL = "https://api.noroff.dev/api/v1/social/posts";
+const apiURL = "https://api.noroff.dev/api/v1/social/posts?_author=true";
 const JWT = localStorage.getItem("accessToken");
 
-export function fetchUsersData() {
+export function fetchAllPosts() {
   return fetch(apiURL, {
     headers: {
       Authorization: `Bearer ${JWT}`,
@@ -9,14 +9,10 @@ export function fetchUsersData() {
   })
     .then((response) => response.json())
     .then((data) => {
-      // Check if the API response is an array of posts
       if (Array.isArray(data)) {
-        const users = data.map((post) => {
-          // Parse the 'created' and 'updated' date strings into Date objects
+        const myPosts = data.map((post) => {
           const createdDate = new Date(post.created);
           const updatedDate = new Date(post.updated);
-
-          // Define the months as an array for formatting
           const months = [
             "January",
             "February",
@@ -32,7 +28,6 @@ export function fetchUsersData() {
             "December",
           ];
 
-          // Format the dates in the desired format
           const formattedCreatedDate = `${createdDate.getDate()}.${
             months[createdDate.getMonth()]
           } ${createdDate.getFullYear()}`;
@@ -42,19 +37,20 @@ export function fetchUsersData() {
 
           return {
             title: post.title,
-            created: formattedCreatedDate, // Use the formatted date
+            created: formattedCreatedDate,
             id: post.id,
             pictureUpload: post.media,
             tags: post.tags,
             body: post.body,
-            updated: formattedUpdatedDate, // Use the formatted date
+            updated: formattedUpdatedDate,
             likes: post._count?.reactions || 0,
             comments: post._count?.comments || 0,
-            profilePicture: post._author?.avatar,
-            username: post._author?.name,
+            avatar: post.author.avatar,
+            username: post.author.name,
+            posts: post.posts,
           };
         });
-        return users;
+        return myPosts;
       } else {
         console.error("API response is not an array of posts.");
         return [];
@@ -65,3 +61,5 @@ export function fetchUsersData() {
       return [];
     });
 }
+
+fetchAllPosts();

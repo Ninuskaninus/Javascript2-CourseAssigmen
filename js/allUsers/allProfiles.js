@@ -1,7 +1,7 @@
 const apiURL = "https://api.noroff.dev/api/v1/social/profiles";
 const JWT = localStorage.getItem("accessToken");
 
-export function fetchProfileData() {
+export function fetchAllProfiles() {
   return fetch(apiURL, {
     headers: {
       Authorization: `Bearer ${JWT}`,
@@ -21,6 +21,7 @@ export function fetchProfileData() {
             posts: profile._count?.posts || 0,
           };
         });
+        console.log(profiles);
         return profiles;
       } else {
         console.error("API response is not an array of profiles.");

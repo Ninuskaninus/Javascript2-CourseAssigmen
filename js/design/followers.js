@@ -1,9 +1,11 @@
-import { fetchUsersData } from "/js/users/posts.js";
-const user = await fetchUsersData();
-import { fetchProfileData } from "/js/users/profiles.js";
-const profiles = await fetchProfileData();
-import { fetchMyProfile } from "/js/users/myProfile.js";
+import {
+  fetchFollowers,
+  fetchFollowing,
+  fetchMyProfile,
+} from "/js/myUser/myProfile.js";
 const myProfile = await fetchMyProfile();
+const followers = await fetchFollowers();
+const following = await fetchFollowing();
 
 //Followers
 const followersContainer = document.getElementById("followers-container");
@@ -27,8 +29,7 @@ const followesIconContainer = document.createElement("div");
 followesIconContainer.classList.add("container", "row", "w-100");
 followersCard.appendChild(followesIconContainer);
 
-user.forEach((followers) => {
-  let myfollowers = myProfile.followers;
+followers.forEach((followers) => {
   const followersIcon = document.createElement("img");
   followersIcon.classList.add(
     "rounded-circle",
@@ -40,12 +41,7 @@ user.forEach((followers) => {
   followersIcon.style.width = "30px";
   followersIcon.style.height = "30px";
   followersIcon.style.objectFit = "cover";
-  followersIcon.src = profiles.avatar;
-  if (followersIcon.avatar && profiles.avatar.trim() !== "") {
-    myProfile.src = myProfile.avatar;
-  } else {
-    followersIcon.src = "/img/profile-placeholder.png";
-  }
+  followersIcon.src = following.avatar || "/img/profile-placeholder.png";
   followesIconContainer.appendChild(followersIcon);
 });
 
@@ -71,7 +67,7 @@ const followingIconContainer = document.createElement("div");
 followingIconContainer.classList.add("container", "row", "w-100");
 followingCard.appendChild(followingIconContainer);
 
-profiles.forEach((person) => {
+following.forEach((following) => {
   const followingIcon = document.createElement("img");
   followingIcon.classList.add(
     "rounded-circle",
@@ -83,6 +79,6 @@ profiles.forEach((person) => {
   followingIcon.style.width = "30px";
   followingIcon.style.height = "30px";
   followingIcon.style.objectFit = "cover";
-  followingIcon.src = person.profilePicture;
+  followingIcon.src = following.avatar || "/img/profile-placeholder.png";
   followingIconContainer.appendChild(followingIcon);
 });
