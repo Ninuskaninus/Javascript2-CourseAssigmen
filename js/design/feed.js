@@ -124,9 +124,10 @@ sortRow.appendChild(sortBtnOldest);
 
 //Feed
 export function createFeedCard(allPosts) {
-  const feedCard = document.createElement("div");
-  feedCard.classList.add("card", "w-100", "mb-4");
+  const feedCard = document.createElement("a");
+  feedCard.classList.add("card", "w-100", "mb-4", "feedCard");
   feedCard.id = allPosts.id;
+  feedCard.href = "/profile/index.html?username=" + allPosts.username;
 
   const cardTextTop = document.createElement("div");
   cardTextTop.classList.add("card-text", "row", "p-4");

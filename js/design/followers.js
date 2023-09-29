@@ -30,19 +30,18 @@ followesIconContainer.classList.add("container", "row", "w-100");
 followersCard.appendChild(followesIconContainer);
 
 followers.forEach((followers) => {
+  const linkFollowers = document.createElement("a");
+  linkFollowers.classList.add("col-sm-2", "me-1");
+  linkFollowers.href = `/profile/index.html? ${followers.name}`;
+  linkFollowers.classList.add("col-1");
   const followersIcon = document.createElement("img");
-  followersIcon.classList.add(
-    "rounded-circle",
-    "col-1",
-    "p-0",
-    "border",
-    "m-1"
-  );
+  followersIcon.classList.add("rounded-circle", "p-0", "border", "m-1");
   followersIcon.style.width = "30px";
   followersIcon.style.height = "30px";
   followersIcon.style.objectFit = "cover";
   followersIcon.src = following.avatar || "/img/profile-placeholder.png";
-  followesIconContainer.appendChild(followersIcon);
+  linkFollowers.appendChild(followersIcon);
+  followesIconContainer.appendChild(linkFollowers);
 });
 
 //Following
@@ -68,17 +67,15 @@ followingIconContainer.classList.add("container", "row", "w-100");
 followingCard.appendChild(followingIconContainer);
 
 following.forEach((following) => {
+  const linkFollowing = document.createElement("a");
+  linkFollowing.classList.add("col-sm-2", "me-1");
+  linkFollowing.href = `/profile/index.html? ${following.name}`;
   const followingIcon = document.createElement("img");
-  followingIcon.classList.add(
-    "rounded-circle",
-    "col-sm-1",
-    "p-0",
-    "border",
-    "m-1"
-  );
+  followingIcon.classList.add("rounded-circle", "p-0", "border", "m-1");
   followingIcon.style.width = "30px";
   followingIcon.style.height = "30px";
   followingIcon.style.objectFit = "cover";
   followingIcon.src = following.avatar || "/img/profile-placeholder.png";
-  followingIconContainer.appendChild(followingIcon);
+  linkFollowing.appendChild(followingIcon);
+  followingIconContainer.appendChild(linkFollowing);
 });
