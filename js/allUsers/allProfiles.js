@@ -1,4 +1,4 @@
-const apiURL = "https://api.noroff.dev/api/v1/social/profiles";
+const apiURL = "https://api.noroff.dev/api/v1/social/profiles_posts=true";
 const JWT = localStorage.getItem("accessToken");
 
 export function fetchAllProfiles() {

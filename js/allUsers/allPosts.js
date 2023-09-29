@@ -10,6 +10,7 @@ export function fetchAllPosts() {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       if (Array.isArray(data)) {
         const myPosts = data.map((post) => {
           const createdDate = new Date(post.created);
