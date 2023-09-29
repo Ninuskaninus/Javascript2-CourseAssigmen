@@ -5,8 +5,6 @@ const API_urls = {
   posts_url: "/api/v1/social/posts",
 };
 
-//REGISTER
-
 async function registerUser(url, data) {
   try {
     const postData = {

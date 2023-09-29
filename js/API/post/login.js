@@ -5,8 +5,6 @@ const API_urls = {
   posts_url: "/api/v1/social/posts",
 };
 
-// LOGIN
-
 const userLogin = {
   name: "nina",
   email: "ninamd@stud.noroff.no",
