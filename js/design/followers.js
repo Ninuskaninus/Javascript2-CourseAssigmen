@@ -1,5 +1,9 @@
-/* import { fetchUsersData } from "/js/users/posts.js";
-const user  = await fetchUsersData();
+import { fetchUsersData } from "/js/users/posts.js";
+const user = await fetchUsersData();
+import { fetchProfileData } from "/js/users/profiles.js";
+const profiles = await fetchProfileData();
+import { fetchMyProfile } from "/js/users/myProfile.js";
+const myProfile = await fetchMyProfile();
 
 //Followers
 const followersContainer = document.getElementById("followers-container");
@@ -13,9 +17,9 @@ followersCard.appendChild(followersCardHeader);
 
 const followersCardHeaderText = document.createElement("h6");
 followersCardHeaderText.classList.add("nametag", "mb-3", "pt-3");
-followersCardHeaderText.innerText = "I'm following";
+followersCardHeaderText.innerText = "Followers";
 const followersCount = document.createElement("b");
-followersCount.innerText = " 40";
+followersCount.innerText = " " + myProfile.followers;
 followersCardHeaderText.appendChild(followersCount);
 followersCardHeader.appendChild(followersCardHeaderText);
 
@@ -23,7 +27,8 @@ const followesIconContainer = document.createElement("div");
 followesIconContainer.classList.add("container", "row", "w-100");
 followersCard.appendChild(followesIconContainer);
 
-user.forEach((user) => {
+user.forEach((followers) => {
+  let myfollowers = myProfile.followers;
   const followersIcon = document.createElement("img");
   followersIcon.classList.add(
     "rounded-circle",
@@ -35,7 +40,12 @@ user.forEach((user) => {
   followersIcon.style.width = "30px";
   followersIcon.style.height = "30px";
   followersIcon.style.objectFit = "cover";
-  followersIcon.src = user.profilePicture;
+  followersIcon.src = profiles.avatar;
+  if (followersIcon.avatar && profiles.avatar.trim() !== "") {
+    myProfile.src = myProfile.avatar;
+  } else {
+    followersIcon.src = "/img/profile-placeholder.png";
+  }
   followesIconContainer.appendChild(followersIcon);
 });
 
@@ -51,9 +61,9 @@ followingCard.appendChild(followingCardHeader);
 
 const followingCardHeaderText = document.createElement("h6");
 followingCardHeaderText.classList.add("nametag", "mb-3", "pt-3");
-followingCardHeaderText.innerText = "Following me";
+followingCardHeaderText.innerText = "Following";
 const followingCount = document.createElement("b");
-followingCount.innerText = " 35";
+followingCount.innerText = " " + myProfile.following;
 followingCardHeaderText.appendChild(followingCount);
 followingCardHeader.appendChild(followingCardHeaderText);
 
@@ -61,7 +71,7 @@ const followingIconContainer = document.createElement("div");
 followingIconContainer.classList.add("container", "row", "w-100");
 followingCard.appendChild(followingIconContainer);
 
-users.forEach((person) => {
+profiles.forEach((person) => {
   const followingIcon = document.createElement("img");
   followingIcon.classList.add(
     "rounded-circle",
@@ -76,4 +86,3 @@ users.forEach((person) => {
   followingIcon.src = person.profilePicture;
   followingIconContainer.appendChild(followingIcon);
 });
- */
