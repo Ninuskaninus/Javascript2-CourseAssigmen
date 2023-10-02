@@ -1,15 +1,13 @@
 const API_urls = {
   base_url: "https://api.noroff.dev",
-  register_url: "/api/v1/social/auth/register",
   login_url: "/api/v1/social/auth/login",
-  posts_url: "/api/v1/social/posts",
 };
 
-const userLogin = {
+/* const userLogin = {
   name: "nina",
   email: "ninamd@stud.noroff.no",
   password: "ninaamdal12345",
-};
+}; */
 
 async function loginUser(url, data) {
   try {
@@ -25,6 +23,7 @@ async function loginUser(url, data) {
     const json = await response.json();
     const accessToken = json.accessToken;
     localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("userName", data.name);
     console.log(json);
 
     return json;
