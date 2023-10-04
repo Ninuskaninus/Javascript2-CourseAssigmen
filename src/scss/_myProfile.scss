@@ -1,0 +1,30 @@
+/* CSS */
+.img-profile {
+  /* Your existing styles here */
+  transition: filter 0.2s; /* Optional: Add a transition effect for hover */
+}
+
+.img-profile:hover {
+  filter: brightness(60%) grayscale(100%); /* Add the desired filter effect */
+  cursor: pointer;
+}
+
+.img-profile:hover::before {
+  content: "Edit Post"; /* Edit Post text */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px; /* Adjust font size as needed */
+  opacity: 0;
+  pointer-events: none; /* Prevent text from being clickable */
+  background: rgba(0, 0, 0, 0.6); /* Transparent black overlay color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  transition: opacity 0.2s; /* Optional: Add a transition effect for hover */
+}
+
+.img-profile:hover::before {
+  opacity: 1; /* Show overlay and text on hover */
+}

@@ -11993,6 +11993,22 @@ header {
   outline: none;
 }
 
+.banner-update-btn,
+.image-update-btn {
+  background-color: #ff6d75;
+  color: #fff;
+  border: none;
+  margin-left: 10px;
+}
+.banner-update-btn:focus,
+.image-update-btn:focus {
+  outline: none;
+}
+.banner-update-btn:hover,
+.image-update-btn:hover {
+  background-color: #ff6d75;
+}
+
 .comment-container {
   background-color: #fff;
   border-radius: 20px;
@@ -12046,12 +12062,57 @@ header {
   z-index: 999;
 }
 
-#follow-btn {
+.edit-banner,
+.edit-image {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 999;
+  max-width: 30px;
+  max-height: 30px;
+}
+.edit-banner:hover,
+.edit-image:hover {
+  cursor: pointer;
+}
+
+.banner-update {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  position: absolute;
+  top: 15px;
+  right: 60px;
+}
+
+.profile-update {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  position: absolute;
+  top: 60px;
+  right: 60px;
+}
+
+.edit-form-container {
+  display: none;
+}
+
+#follow-btn,
+#unfollow-btn {
   z-index: 5;
   bottom: -50px;
   background-color: #ff6d75;
   width: 150px;
   color: #fff;
+}
+
+#unfollow-btn {
+  z-index: 4;
 }
 
 .img-profile {
@@ -12219,6 +12280,53 @@ header {
   max-width: 30px;
   max-height: 30px;
   cursor: pointer;
+}
+
+/* CSS */
+.img-profile {
+  /* Your existing styles here */
+  transition: filter 0.2s; /* Optional: Add a transition effect for hover */
+}
+
+.img-profile:hover {
+  filter: brightness(60%) grayscale(100%); /* Add the desired filter effect */
+  cursor: pointer;
+}
+
+.img-profile:hover::before {
+  content: "Edit Post"; /* Edit Post text */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px; /* Adjust font size as needed */
+  opacity: 0;
+  pointer-events: none; /* Prevent text from being clickable */
+  background: rgba(0, 0, 0, 0.6); /* Transparent black overlay color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  transition: opacity 0.2s; /* Optional: Add a transition effect for hover */
+}
+
+.img-profile:hover::before {
+  opacity: 1; /* Show overlay and text on hover */
+}
+
+.image-modal-container {
+  width: 100%;
+  min-height: 100vh;
+  height: auto; /* Change to auto */
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.466);
+  top: 0;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 150px;
+  display: none;
+  overflow: hidden; /* Hide overflow outside the modal */
 }
 
 /*# sourceMappingURL=index.css.map */

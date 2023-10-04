@@ -1,9 +1,9 @@
-const base_url = "https://api.noroff.dev/api/v1/social/profiles";
-const users_url = "/nina";
+const base_url = "https://api.noroff.dev/api/v1/social/profiles/";
+const users_url = localStorage.getItem("userName");
 const accessToken = localStorage.getItem("accessToken");
 
 // MY PROFILE
-export function fetchMyProfile() {
+export async function fetchMyProfile() {
   const myProfile_url = `${base_url}${users_url}`;
 
   return fetch(myProfile_url, {
@@ -37,7 +37,7 @@ export function fetchMyProfile() {
 
 // MY POSTS
 const myPosts_url = `${base_url}${users_url}/posts`;
-export function fetchMyPosts() {
+export async function fetchMyPosts() {
   return fetch(myPosts_url, {
     headers: {
       Authorization: `Bearer ${JWT}`,
@@ -102,7 +102,10 @@ export function fetchMyPosts() {
 }
 
 // MY FOLLOWERS
-const followers_url = `https://api.noroff.dev/api/v1/social/profiles/nina?_following=true&_followers=true&_posts=true`;
+const followers_url =
+  "https://api.noroff.dev/api/v1/social/profiles/" +
+  users_url +
+  "?_following=true&_followers=true&_posts=true";
 const JWT = localStorage.getItem("accessToken");
 
 export function fetchFollowers() {

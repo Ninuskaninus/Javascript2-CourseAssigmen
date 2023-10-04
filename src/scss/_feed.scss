@@ -91,6 +91,20 @@ header {
   }
 }
 
+.banner-update-btn,
+.image-update-btn {
+  background-color: $pink;
+  color: $white;
+  border: none;
+  margin-left: 10px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: $pink;
+  }
+}
+
 .comment-container {
   background-color: $white;
   border-radius: 20px;
@@ -142,4 +156,44 @@ header {
   border-radius: 4px;
   font-size: 12px;
   z-index: 999;
+}
+
+.edit-banner,
+.edit-image {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 999;
+  max-width: 30px;
+  max-height: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.banner-update {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  position: absolute;
+  top: 15px;
+  right: 60px;
+}
+
+.profile-update {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  position: absolute;
+  top: 60px;
+  right: 60px;
+}
+
+.edit-form-container {
+  display: none;
 }

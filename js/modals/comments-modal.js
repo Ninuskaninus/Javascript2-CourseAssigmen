@@ -1,85 +1,89 @@
-import { fetchUsersData } from "/js/users/posts.js";
-const users = await fetchUsersData();
-import { createFeedCard } from "/js/design/feed.js";
-import { fetchMyProfile } from "/js/users/myProfile.js";
+import { fetchAllPosts } from "/js/API/get/allPosts.js";
+const users = await fetchAllPosts();
+import { createFeedCard } from "/js/design/create-feed.card.js";
+import { fetchMyProfile } from "/js/API/get/myProfile.js";
 const myProfile = await fetchMyProfile();
 
-const commentModuleContainer = document.getElementById("comment-modal");
-commentModuleContainer.addEventListener("click", (e) => {
-  if (e.target === commentModuleContainer) {
-    commentModuleContainer.style.display = "none";
-  }
-});
+export function commentsModal() {
+  const commentModuleContainer = document.getElementById("comment-modal");
+  commentModuleContainer.addEventListener("click", (e) => {
+    if (e.target === commentModuleContainer) {
+      commentModuleContainer.style.display = "none";
+    }
+  });
 
-// POST
-const moduleContent = document.createElement("div");
-moduleContent.classList.add("module-content");
-moduleContent.id = "module-content" + users[0].id;
-commentModuleContainer.appendChild(moduleContent);
+  const feedCardContainer = document.querySelectorAll(".feedCard");
 
-const user = users[1];
-const feedCard = createFeedCard(user);
-moduleContent.appendChild(feedCard);
+  // POST
+  const moduleContent = document.createElement("div");
+  moduleContent.classList.add("module-content");
+  moduleContent.id = "module-content" + users[0].id;
+  commentModuleContainer.appendChild(moduleContent);
 
-// COMMENTS
-const commentContainer = document.createElement("div");
-commentContainer.classList.add("comment-container");
-moduleContent.appendChild(commentContainer);
+  const user = users[1];
+  const feedCard = createFeedCard(user);
+  moduleContent.appendChild(feedCard);
 
-const commentsContainer = document.createElement("div");
-commentsContainer.classList.add("comments-container");
-commentContainer.appendChild(commentsContainer);
+  // COMMENTS
+  const commentContainer = document.createElement("div");
+  commentContainer.classList.add("comment-container");
+  moduleContent.appendChild(commentContainer);
 
-const comment = document.createElement("div");
-comment.classList.add("comment");
-commentsContainer.appendChild(comment);
+  const commentsContainer = document.createElement("div");
+  commentsContainer.classList.add("comments-container");
+  commentContainer.appendChild(commentsContainer);
 
-const commentProfileInfo = document.createElement("div");
-commentProfileInfo.classList.add("comment-profile-info");
-comment.appendChild(commentProfileInfo);
+  const comment = document.createElement("div");
+  comment.classList.add("comment");
+  commentsContainer.appendChild(comment);
 
-const commentProfilePic = document.createElement("div");
-commentProfilePic.classList.add("comment-img");
-commentProfilePic.style.backgroundImage = `url(${users[0].profilePicture})`;
+  const commentProfileInfo = document.createElement("div");
+  commentProfileInfo.classList.add("comment-profile-info");
+  comment.appendChild(commentProfileInfo);
 
-const commentUsername = document.createElement("div");
-commentUsername.classList.add("comment-username");
-const username = document.createElement("h6");
-username.classList.add("m-0", "text-primary");
-username.innerText = users[0].name;
-commentUsername.appendChild(username);
+  const commentProfilePic = document.createElement("div");
+  commentProfilePic.classList.add("comment-img");
+  commentProfilePic.style.backgroundImage = `url(${users[0].profilePicture})`;
 
-commentProfileInfo.appendChild(commentProfilePic);
-commentProfileInfo.appendChild(commentUsername);
+  const commentUsername = document.createElement("div");
+  commentUsername.classList.add("comment-username");
+  const username = document.createElement("h6");
+  username.classList.add("m-0", "text-primary");
+  username.innerText = users[0].name;
+  commentUsername.appendChild(username);
 
-const commentContent = document.createElement("div");
-commentContent.classList.add("comment-content");
-const commentText = document.createElement("p");
-commentText.innerText = "This is a comment on a post! This is cool!";
-commentContent.appendChild(commentText);
-comment.appendChild(commentContent);
+  commentProfileInfo.appendChild(commentProfilePic);
+  commentProfileInfo.appendChild(commentUsername);
 
-// Leave comment
+  const commentContent = document.createElement("div");
+  commentContent.classList.add("comment-content");
+  const commentText = document.createElement("p");
+  commentText.innerText = "This is a comment on a post! This is cool!";
+  commentContent.appendChild(commentText);
+  comment.appendChild(commentContent);
 
-const leaveCommentContainer = document.createElement("div");
-leaveCommentContainer.classList.add("leave-comment-container", "card");
-moduleContent.appendChild(leaveCommentContainer);
+  // Leave comment
 
-const leaveComment = document.createElement("form");
-leaveComment.classList.add("leave-comment");
-leaveCommentContainer.appendChild(leaveComment);
+  const leaveCommentContainer = document.createElement("div");
+  leaveCommentContainer.classList.add("leave-comment-container", "card");
+  moduleContent.appendChild(leaveCommentContainer);
 
-const leaveCommentProfilePic = document.createElement("div");
-leaveCommentProfilePic.classList.add("leave-comment-img");
-leaveCommentProfilePic.style.backgroundImage = `url(${myProfile.avatar})`;
-leaveComment.appendChild(leaveCommentProfilePic);
+  const leaveComment = document.createElement("form");
+  leaveComment.classList.add("leave-comment");
+  leaveCommentContainer.appendChild(leaveComment);
 
-const leaveCommentInput = document.createElement("input");
-leaveCommentInput.classList.add("leave-comment-input");
-leaveCommentInput.placeholder = "Leave a comment...";
-leaveComment.appendChild(leaveCommentInput);
+  const leaveCommentProfilePic = document.createElement("div");
+  leaveCommentProfilePic.classList.add("leave-comment-img");
+  leaveCommentProfilePic.style.backgroundImage = `url(${myProfile.avatar})`;
+  leaveComment.appendChild(leaveCommentProfilePic);
 
-const leaveCommentButton = document.createElement("img");
-leaveCommentButton.classList.add("leave-comment-button");
-leaveCommentButton.src = "/img/send.png";
-leaveComment.appendChild(leaveCommentButton);
+  const leaveCommentInput = document.createElement("input");
+  leaveCommentInput.classList.add("leave-comment-input");
+  leaveCommentInput.placeholder = "Leave a comment...";
+  leaveComment.appendChild(leaveCommentInput);
+
+  const leaveCommentButton = document.createElement("img");
+  leaveCommentButton.classList.add("leave-comment-button");
+  leaveCommentButton.src = "/img/send.png";
+  leaveComment.appendChild(leaveCommentButton);
+}

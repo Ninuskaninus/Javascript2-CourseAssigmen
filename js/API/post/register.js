@@ -30,17 +30,25 @@ form.addEventListener("submit", async function (event) {
       },
       body: JSON.stringify(newUser),
     };
-    const response = await fetch(API_urls.base_url + API_urls.register_url, postData);
+    const response = await fetch(
+      API_urls.base_url + API_urls.register_url,
+      postData
+    );
     console.log(response);
     const json = await response.json();
+
+    if (response.ok) {
+      window.location.href = "../index.html";
+    } else {
+      console.log("Login failed. Handle the error.");
+    }
+
+    const accessToken = json.accessToken;
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("userName", json.name);
+
     console.log(json);
   } catch (error) {
     console.log(error);
   }
 });
-
-
-
-
-
-

@@ -1,14 +1,19 @@
-import { fetchMyPosts, fetchMyProfile } from "/js/myUser/myProfile.js";
-import { updateUserProfile } from "/js/design/userProfileHead.js";
+import { fetchMyProfile } from "/js/API/get/myProfile.js";
 import { updateNavbarProfile } from "/js/design/navbar_profile.js";
-import { insertFollowerContainer } from "/js/design/followers.js";
+import { insertFollowerContainerProfile } from "/js/design/followersProfile.js";
+import { updateUserProfileHead } from "/js/design/userProfileHead.js";
+import { fetchPosts } from "/js/API/get/allProfiles.js";
+import { apiPostFollow } from "/js/API/put/follow.js";
+import { apiPostUnfollow } from "/js/API/put/follow.js";
 
-const myPosts = await fetchMyPosts();
+const myPosts = await fetchPosts();
 const myProfile = await fetchMyProfile();
 
-updateUserProfile(myProfile);
+updateUserProfileHead(myProfile);
 updateNavbarProfile(myProfile);
-insertFollowerContainer();
+insertFollowerContainerProfile();
+apiPostFollow();
+apiPostUnfollow();
 
 const profileContainer = document.getElementById("profile-container");
 const profileHead = document.createElement("div");
@@ -17,7 +22,7 @@ profileContainer.appendChild(profileHead);
 
 const profileTitle = document.createElement("h6");
 profileTitle.classList.add("nametag", "p-3");
-profileTitle.innerText = "Latest posts";
+profileTitle.innerText = "Latest posts" + " " + myPosts.length;
 profileHead.appendChild(profileTitle);
 
 const profileImgContainer = document.createElement("div");

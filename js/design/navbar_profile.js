@@ -1,4 +1,4 @@
-import { fetchMyProfile } from "/js/myUser/myProfile.js";
+import { fetchMyProfile } from "/js/API/get/myProfile.js";
 const myProfile = await fetchMyProfile();
 
 export function updateNavbarProfile(profile) {

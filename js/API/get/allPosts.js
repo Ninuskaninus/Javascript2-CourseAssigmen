@@ -2,7 +2,7 @@ const apiURL =
   "https://api.noroff.dev/api/v1/social/posts?_author=true&_comments=true&_reactions=true&_posts=true&_sort=created:desc";
 const JWT = localStorage.getItem("accessToken");
 
-export function fetchAllPosts() {
+export async function fetchAllPosts() {
   return fetch(apiURL, {
     headers: {
       Authorization: `Bearer ${JWT}`,

@@ -1,12 +1,14 @@
-import { fetchAllPosts } from "/js/allUsers/allPosts.js";
-import { fetchMyProfile } from "/js/myUser/myProfile.js";
-import { updateUserProfile } from "/js/design/userProfileHead.js";
+import { fetchAllPosts } from "/js/API/get/allPosts.js";
+import { fetchMyProfile } from "/js/API/get/myProfile.js";
+import { updateMyProfileHead } from "/js/design/myProfileHead.js";
 import { updateNavbarProfile } from "/js/design/navbar_profile.js";
-import { insertFollowerContainer } from "/js/design/followers.js";
+import { insertFollowerContainerFeed } from "/js/design/followersFeed.js";
 import { uploadContainer } from "/js/design/upload_container.js";
 import { createFeedCard } from "/js/design/create-feed.card.js";
-import { sortPosts } from "/js/design/sort.js";
+import { sortPosts } from "/js/modals/sort.js";
 import { apiPostNewPost } from "/js/API/post/newPost.js";
+import { commentsModal } from "/js/modals/comments-modal.js";
+import { likePost } from "/js/API/put/like.js";
 
 const myProfile = await fetchMyProfile();
 const allPosts = await fetchAllPosts();
@@ -14,16 +16,20 @@ const allPosts = await fetchAllPosts();
 //Containers
 const feedContainer = document.getElementById("feed-container");
 
+//Modals
+commentsModal();
+likePost();
+
 //Upload container
 uploadContainer(feedContainer);
 apiPostNewPost();
 
 //Shown profile
-updateUserProfile(myProfile);
+updateMyProfileHead(myProfile);
 updateNavbarProfile(myProfile);
 
 //Followers container
-insertFollowerContainer();
+insertFollowerContainerFeed();
 
 //Sort
 sortPosts(feedContainer);

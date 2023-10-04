@@ -1,5 +1,6 @@
-import { fetchAllPosts } from "/js/allUsers/allPosts.js";
+import { fetchAllPosts } from "/js/API/get/allPosts.js";
 const allPosts = await fetchAllPosts();
+import { createLikeButton } from "/js/API/put/like.js";
 
 export function createFeedCard(allPosts) {
   const feedCard = document.createElement("div");
@@ -86,9 +87,9 @@ export function createFeedCard(allPosts) {
 
   const likebutton = document.createElement("img");
   likebutton.src = "/img/likebutton.png";
-  likebutton.classList.add("m-2", "me-0", "response-icon");
+  likebutton.classList.add("m-2", "me-0", "response-icon", "likebutton");
   likebutton.style.cursor = "pointer";
-  likebutton.id = "likebutton" + allPosts.id;
+  likebutton.id = allPosts.id;
   likebutton.addEventListener("click", () => {
     if (likebutton.src.includes("likebutton.png")) {
       likebutton.src = "/img/likebuttonfull.png";

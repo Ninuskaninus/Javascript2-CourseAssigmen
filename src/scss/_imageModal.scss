@@ -1,0 +1,15 @@
+.image-modal-container {
+  width: 100%;
+  min-height: 100vh;
+  height: auto; /* Change to auto */
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.466);
+  top: 0;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 150px;
+  display: none;
+  overflow: hidden; /* Hide overflow outside the modal */
+}

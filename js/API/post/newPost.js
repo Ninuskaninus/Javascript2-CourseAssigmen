@@ -2,16 +2,13 @@ export function apiPostNewPost() {
   const base_url = "https://api.noroff.dev/api/v1/social/posts";
   const accessToken = localStorage.getItem("accessToken");
 
-  // Move the form element capturing here
   const form = document.getElementById("postForm");
   const bodyElement = document.getElementById("upload-head-text");
   const mediaElement = document.getElementById("upload-image");
 
-  // Capture the values of the body and media elements inside the event listener
   form.addEventListener("submit", async function (event) {
-    event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault();
 
-    // Capture the values here when the form is submitted
     const bodyValue = bodyElement.value;
     const mediaUrl = mediaElement.value;
 
@@ -19,9 +16,9 @@ export function apiPostNewPost() {
     console.log("Media URL:", mediaUrl);
 
     const newPost = {
-      title: "", // You can set the title here if needed
-      body: bodyValue, // Set the body property to the value of the text-area
-      media: mediaUrl, // Set the media property to the URL provided by the file upload
+      title: "",
+      body: bodyValue,
+      media: mediaUrl,
     };
 
     try {
@@ -31,7 +28,7 @@ export function apiPostNewPost() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify(newPost), // Use the updated newPost object
+        body: JSON.stringify(newPost),
       };
       const response = await fetch(base_url, postData);
       console.log(response);
@@ -40,5 +37,6 @@ export function apiPostNewPost() {
     } catch (error) {
       console.log(error);
     }
+    window.location.reload();
   });
 }

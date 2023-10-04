@@ -1,13 +1,8 @@
-import {
-  fetchFollowers,
-  fetchFollowing,
-  fetchMyProfile,
-} from "/js/myUser/myProfile.js";
-const myProfile = await fetchMyProfile();
+import { fetchFollowers, fetchFollowing } from "/js/API/get/myProfile.js";
 const followers = await fetchFollowers();
 const following = await fetchFollowing();
 
-export function insertFollowerContainer() {
+export function insertFollowerContainerProfile() {
   //Followers
   const followersContainer = document.getElementById("followers-container");
   const followersCard = document.createElement("div");
@@ -22,7 +17,7 @@ export function insertFollowerContainer() {
   followersCardHeaderText.classList.add("nametag", "mb-3", "pt-3");
   followersCardHeaderText.innerText = "Followers";
   const followersCount = document.createElement("b");
-  followersCount.innerText = " " + myProfile.followers;
+  followersCount.innerText = " " + followers.length;
   followersCardHeaderText.appendChild(followersCount);
   followersCardHeader.appendChild(followersCardHeaderText);
 
@@ -33,14 +28,14 @@ export function insertFollowerContainer() {
   followers.forEach((followers) => {
     const linkFollowers = document.createElement("a");
     linkFollowers.classList.add("col-sm-2", "me-1");
-    linkFollowers.href = `/profile/index.html? ${followers.name}`;
+    linkFollowers.href = "/profile/index.html?username=" + followers.name;
     linkFollowers.classList.add("col-1");
     const followersIcon = document.createElement("img");
     followersIcon.classList.add("rounded-circle", "p-0", "border", "m-1");
     followersIcon.style.width = "30px";
     followersIcon.style.height = "30px";
     followersIcon.style.objectFit = "cover";
-    followersIcon.src = following.avatar || "/img/profile-placeholder.png";
+    followersIcon.src = followers.avatar || "/img/profile-placeholder.png";
     linkFollowers.appendChild(followersIcon);
     followesIconContainer.appendChild(linkFollowers);
   });
@@ -59,7 +54,7 @@ export function insertFollowerContainer() {
   followingCardHeaderText.classList.add("nametag", "mb-3", "pt-3");
   followingCardHeaderText.innerText = "Following";
   const followingCount = document.createElement("b");
-  followingCount.innerText = " " + myProfile.following;
+  followingCount.innerText = " " + following.length;
   followingCardHeaderText.appendChild(followingCount);
   followingCardHeader.appendChild(followingCardHeaderText);
 
@@ -70,7 +65,7 @@ export function insertFollowerContainer() {
   following.forEach((following) => {
     const linkFollowing = document.createElement("a");
     linkFollowing.classList.add("col-sm-2", "me-1");
-    linkFollowing.href = `/profile/index.html? ${following.name}`;
+    linkFollowing.href = "/profile/index.html?username=" + following.name;
     const followingIcon = document.createElement("img");
     followingIcon.classList.add("rounded-circle", "p-0", "border", "m-1");
     followingIcon.style.width = "30px";
