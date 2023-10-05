@@ -2,6 +2,7 @@ const base_url = "https://api.noroff.dev/api/v1/social/profiles/";
 const users_url = localStorage.getItem("userName");
 const accessToken = localStorage.getItem("accessToken");
 
+
 // MY PROFILE
 export async function fetchMyProfile() {
   const myProfile_url = `${base_url}${users_url}`;

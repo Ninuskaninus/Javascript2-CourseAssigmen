@@ -197,3 +197,113 @@ header {
 .edit-form-container {
   display: none;
 }
+
+.edit-button{
+  position: absolute;
+  right:30px;
+}
+
+.edit-menu-container{
+  background-color: white;
+  height: fit-content;
+  width: 150px;
+  z-index: 100;
+  position: absolute;
+  display: none;
+  right: 30px;
+  top: 50px;
+  padding: 0;
+}
+
+.edit-menu{
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  padding-left: 10px;
+  &:hover{
+    background-color: $primary;
+    color: $white;
+  }
+}
+
+.warning-box-container{
+  min-width: 100%;
+  min-height: 100%;
+  background-color: #33333356;
+  position: absolute;
+  top: 0;
+  border-radius: 20px;
+  display: none;
+  z-index: 101;
+}
+
+.warning-box{
+  background-color: white;
+  border-radius: 20px;
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  box-sizing: border-box;
+  text-align: center;
+
+}
+
+.yes-button, .no-button{
+  background-color: $primary;
+  color: $white;
+  min-width: 80px;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  &:hover{
+    cursor: pointer;
+    background-color: $red;
+  }
+}
+
+.edit-post-container{
+  min-width: 100%;
+  max-height: 40%;
+  background-color: #33333356;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+  display: none;
+  z-index: 101;
+}
+
+.edit-post-input{
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: $pink 1px solid;
+  border-radius: 20px;
+  padding: 10px;
+  &:focus{
+    outline: none;
+  }
+}
+
+.edit-post-button{
+  z-index: 102;
+  background-color: $primary;
+  color: $white;
+  min-width: 80px;
+  min-height: 100%;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  right: 0;;
+}
+
+
