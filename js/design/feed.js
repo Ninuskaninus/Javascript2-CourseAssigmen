@@ -7,8 +7,10 @@ import { uploadContainer } from "/js/design/upload_container.js";
 import { createFeedCard } from "/js/design/create-feed.card.js";
 import { sortPosts } from "/js/modals/sort.js";
 import { apiPostNewPost } from "/js/API/post/newPost.js";
-import { commentsModal } from "/js/modals/comments-modal.js";
+/* import { commentsModal } from "/js/modals/comments-modal.js"; */
 import { likePost } from "/js/API/put/like.js";
+import { commentsModal } from "/js/modals/comments-modal.js";
+
 
 const myProfile = await fetchMyProfile();
 const allPosts = await fetchAllPosts();
@@ -17,8 +19,9 @@ const allPosts = await fetchAllPosts();
 const feedContainer = document.getElementById("feed-container");
 
 //Modals
-commentsModal();
+
 likePost();
+
 
 //Upload container
 uploadContainer(feedContainer);
@@ -36,4 +39,5 @@ sortPosts(feedContainer);
 allPosts.forEach((post) => {
   const feedCard = createFeedCard(post);
   feedContainer.appendChild(feedCard);
+  commentsModal();
 });

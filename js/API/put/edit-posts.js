@@ -41,7 +41,8 @@ export async function deleteImg(event){
     const JWT = localStorage.getItem("accessToken");
 
         const noImg = {
-            title: "https:noimage.png",
+            title: "",
+            media: " ",
         };
 
         try {
@@ -51,9 +52,8 @@ export async function deleteImg(event){
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${JWT}`,
                 },
-                body: JSON.stringify(noImg),
             };
-            const response = await fetch(edit_url, deleteImg);
+            const response = await fetch(edit_url, noImg);
             console.log(response);
             const json = await response.json();
             console.log(json);

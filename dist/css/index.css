@@ -12050,6 +12050,7 @@ header {
 .feedCard {
   text-decoration: none;
   cursor: pointer;
+  max-width: 600px;
 }
 
 .tooltip {
@@ -12259,6 +12260,7 @@ header {
   padding-bottom: 150px;
   display: none;
   overflow: hidden; /* Hide overflow outside the modal */
+  z-index: 1000;
 }
 
 .module-content {

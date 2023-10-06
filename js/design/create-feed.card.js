@@ -9,10 +9,18 @@ import { deletePost } from "/js/API/delete/delete-post.js";
 
 
 
+
+/**
+ * Creates a feed card element based on the provided post data.
+ * @param {Object} allPosts - The post data to use for creating the card.
+ * @returns {HTMLElement} - The created feed card element.
+ */
 export function createFeedCard(allPosts) {
   const feedCard = document.createElement("div");
-  feedCard.classList.add("card", "w-100", "mb-4", "feedCard");
+  feedCard.classList.add("card", "mb-4", "feedCard");
   feedCard.id = allPosts.id;
+
+
 
   const cardTextTop = document.createElement("div");
   cardTextTop.classList.add("card-text", "row", "p-4");
@@ -209,7 +217,7 @@ export function createFeedCard(allPosts) {
       editPost(event);
     })
 
-    if(cardImage.src === allPosts.pictureUpload){
+/*     if(cardImage.src === allPosts.pictureUpload){
       const deleteImgIconContainer = document.createElement("div");
       deleteImgIconContainer.classList.add("delete-img-icon-container");
       feedCard.appendChild(deleteImgIconContainer);
@@ -264,7 +272,7 @@ export function createFeedCard(allPosts) {
         deleteImg(event);
         console.log(feedCard.id);
       }) 
-    }
+    } */
 
     const editMenuContainer = document.createElement("div");
     editMenuContainer.classList.add("edit-menu-container", "dropshadow");

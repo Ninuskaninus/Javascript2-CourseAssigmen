@@ -12,6 +12,7 @@
   padding-bottom: 150px;
   display: none;
   overflow: hidden; /* Hide overflow outside the modal */
+  z-index: 1000;
 }
 
 .module-content {

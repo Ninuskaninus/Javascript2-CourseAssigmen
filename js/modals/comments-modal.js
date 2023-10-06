@@ -1,18 +1,61 @@
 import { fetchAllPosts } from "/js/API/get/allPosts.js";
-const users = await fetchAllPosts();
-import { createFeedCard } from "/js/design/create-feed.card.js";
 import { fetchMyProfile } from "/js/API/get/myProfile.js";
+import { createFeedCard } from "/js/design/create-feed.card.js";
 const myProfile = await fetchMyProfile();
+const postData = await fetchAllPosts();
+
+
 
 export function commentsModal() {
-  const commentModuleContainer = document.getElementById("comment-modal");
+  const commentModuleContainer = document.querySelector(".comment-module-container");
+  commentModuleContainer.addEventListener("click", (e) => {
+    if (e.target === commentModuleContainer) {
+      commentModuleContainer.style.display = "none";
+    }
+  });
+  
+  const feedContainer = document.getElementById("feed-container"); 
+  feedContainer.addEventListener("click", (event) => {
+    const feedCard = event.target.closest(".feedCard");
+    commentModuleContainer.style.display = "flex";
+
+    if (feedCard) {
+      const thisPostId = feedCard.id;
+      commentModuleContainer.id = "modal" + thisPostId;
+    }
+  });
+
+  const moduleContent = document.createElement("div");
+  moduleContent.classList.add("module-content");
+  commentModuleContainer.appendChild(moduleContent);
+
+  const user = postData.thisPostId;
+  console.log(user);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* export function commentsModal() {
+  const feedCardContainer = document.querySelectorAll(".feed-container");
+  const commentModuleContainer = document.createElement("div");
+  commentModuleContainer.classList.add("comment-module-container");
   commentModuleContainer.addEventListener("click", (e) => {
     if (e.target === commentModuleContainer) {
       commentModuleContainer.style.display = "none";
     }
   });
 
-  const feedCardContainer = document.querySelectorAll(".feedCard");
+  feedCardContainer.appendChild(commentModuleContainer);
+
+  
 
   // POST
   const moduleContent = document.createElement("div");
@@ -86,4 +129,4 @@ export function commentsModal() {
   leaveCommentButton.classList.add("leave-comment-button");
   leaveCommentButton.src = "/img/send.png";
   leaveComment.appendChild(leaveCommentButton);
-}
+} */

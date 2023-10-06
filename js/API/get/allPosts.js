@@ -49,6 +49,8 @@ export async function fetchAllPosts() {
             avatar: post.author.avatar,
             username: post.author.name,
             posts: post.posts,
+            commentPost: post.comments,
+
           };
         });
         return myPosts;
