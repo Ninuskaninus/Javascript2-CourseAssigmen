@@ -11,10 +11,7 @@ export function apiPostLogin() {
 
     const emailValue = emailElement.value;
     const passwordValue = passwordElement.value;
-
-    console.log("Email Value:", emailValue);
-    console.log("Password Value:", passwordValue);
-
+    
     const userLogin = {
       email: emailValue,
       password: passwordValue,

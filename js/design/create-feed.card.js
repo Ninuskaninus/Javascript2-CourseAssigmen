@@ -4,8 +4,9 @@ import { createLikeButton } from "/js/API/put/like.js";
 import {fetchMyProfile} from "/js/API/get/myProfile.js";
 const myProfile = await fetchMyProfile();
 const myUsername = myProfile.name;
-import { editPost } from "/js/API/put/edit-posts.js";
+import { editPost, deleteImg } from "/js/API/put/edit-posts.js";
 import { deletePost } from "/js/API/delete/delete-post.js";
+
 
 
 export function createFeedCard(allPosts) {
@@ -50,7 +51,7 @@ export function createFeedCard(allPosts) {
 
   const cardImage = document.createElement("img");
   cardImage.classList.add("card-img-top", "feed-image", "dropshadow");
-  cardImage.src = allPosts.pictureUpload;
+  cardImage.src=allPosts.pictureUpload;
   cardImage.alt = "Feed image";
   feedCard.appendChild(cardImage);
 
@@ -207,6 +208,63 @@ export function createFeedCard(allPosts) {
     editButton.addEventListener("click", (event)=> {
       editPost(event);
     })
+
+    if(cardImage.src === allPosts.pictureUpload){
+      const deleteImgIconContainer = document.createElement("div");
+      deleteImgIconContainer.classList.add("delete-img-icon-container");
+      feedCard.appendChild(deleteImgIconContainer);
+
+      const deleteImgIcon = document.createElement("img");
+      deleteImgIcon.src = "/img/delete.png";
+      deleteImgIcon.classList.add("delete-img-icon");
+      deleteImgIconContainer.appendChild(deleteImgIcon);
+
+      const deleteImgWarningContainer = document.createElement("div");
+      deleteImgWarningContainer.classList.add("warning-box-container");
+      feedCard.appendChild(deleteImgWarningContainer);
+
+      const deleteImgWarningBox = document.createElement("div");
+      deleteImgWarningBox.classList.add("warning-box");
+      deleteImgWarningContainer.appendChild(deleteImgWarningBox);
+
+      const deleteImgWarningBoxText = document.createElement("p");
+      deleteImgWarningBoxText.classList.add("warning-box-text");
+      deleteImgWarningBoxText.innerText = "Are you sure you want to delete this image?";
+      deleteImgWarningBox.appendChild(deleteImgWarningBoxText);
+
+      const deleteImgBtnContainer = document.createElement("div");
+      deleteImgBtnContainer.classList.add("btn-container");
+      deleteImgWarningBox.appendChild(deleteImgBtnContainer);
+
+      const deleteImgYesButton = document.createElement("button");
+      deleteImgYesButton.classList.add("yes-button");
+      deleteImgYesButton.innerText = "Yes";
+      deleteImgYesButton.id = "delete-img-yes-button";
+      deleteImgBtnContainer.appendChild(deleteImgYesButton);
+
+      const deleteImgNoButton = document.createElement("button");
+      deleteImgNoButton.classList.add("no-button");
+      deleteImgNoButton.innerText = "No";
+      deleteImgNoButton.id = "delete-img-no-button";
+      deleteImgBtnContainer.appendChild(deleteImgNoButton);
+
+      deleteImgIcon.addEventListener("click", ()=> {
+        if(deleteImgWarningContainer.style.display === "block"){
+          deleteImgWarningContainer.style.display = "none";
+        } else {
+          deleteImgWarningContainer.style.display = "block";
+        }
+      })
+
+      deleteImgNoButton.addEventListener("click", ()=> {
+        deleteImgWarningContainer.style.display = "none";
+      })
+ 
+      deleteImgYesButton.addEventListener("click", (event)=> {
+        deleteImg(event);
+        console.log(feedCard.id);
+      }) 
+    }
 
     const editMenuContainer = document.createElement("div");
     editMenuContainer.classList.add("edit-menu-container", "dropshadow");

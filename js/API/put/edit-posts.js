@@ -34,3 +34,31 @@ export async function editPost(event) {
         window.location.reload();
     });
 }
+
+export async function deleteImg(event){
+    const thisPostId = event.target.closest(".feedCard").id;
+    const edit_url = `https://api.noroff.dev/api/v1/social/posts/${thisPostId}`;
+    const JWT = localStorage.getItem("accessToken");
+
+        const noImg = {
+            title: "https:noimage.png",
+        };
+
+        try {
+            const deleteImg = {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${JWT}`,
+                },
+                body: JSON.stringify(noImg),
+            };
+            const response = await fetch(edit_url, deleteImg);
+            console.log(response);
+            const json = await response.json();
+            console.log(json);
+        } catch (error) {
+            console.log(error);
+        }
+
+}

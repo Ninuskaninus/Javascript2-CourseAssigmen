@@ -12209,6 +12209,25 @@ header {
   right: 0;
 }
 
+.delete-img-icon-container {
+  min-height: 50px;
+  width: 100%;
+  position: absolute;
+  top: 112px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-img-icon {
+  max-width: 20px;
+  max-height: 20px;
+  object-fit: cover;
+  margin: 10px;
+}
+.delete-img-icon:hover {
+  cursor: pointer;
+}
+
 #follow-btn,
 #unfollow-btn {
   z-index: 5;

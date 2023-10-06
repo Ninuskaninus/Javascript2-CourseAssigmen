@@ -1,19 +1,21 @@
-import { fetchMyProfile } from "/js/API/get/myProfile.js";
+import { fetchMyProfile, fetchFollowing } from "/js/API/get/myProfile.js";
 import { updateNavbarProfile } from "/js/design/navbar_profile.js";
 import { insertFollowerContainerProfile } from "/js/design/followersProfile.js";
 import { updateUserProfileHead } from "/js/design/userProfileHead.js";
 import { fetchPosts } from "/js/API/get/allProfiles.js";
 import { apiPostFollow } from "/js/API/put/follow.js";
-import { apiPostUnfollow } from "/js/API/put/follow.js";
-
+import { apiPostUnfollow } from "/js/API/put/unfollow.js";
+import { getUsername } from "/js/API/get/getUsername.js";
 const myPosts = await fetchPosts();
 const myProfile = await fetchMyProfile();
+const username = await getUsername();
 
+apiPostFollow();
+apiPostUnfollow();
 updateUserProfileHead(myProfile);
 updateNavbarProfile(myProfile);
 insertFollowerContainerProfile();
-apiPostFollow();
-apiPostUnfollow();
+
 
 const profileContainer = document.getElementById("profile-container");
 const profileHead = document.createElement("div");
