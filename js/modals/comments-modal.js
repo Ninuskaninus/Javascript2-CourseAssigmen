@@ -80,8 +80,6 @@ export async function commentContainer() {
           postBodyImage.classList.add("card-img-top", "feed-image", "dropshadow");
         }
 
-  
-
         const postBodyContainer = document.createElement("div");
         postBodyContainer.classList.add("card-body");
         postBodyContainer.innerText = postInfo.body;
@@ -90,6 +88,51 @@ export async function commentContainer() {
         const postFooterContainer = document.createElement("div");
         postFooterContainer.classList.add("card-body", "mt-4", "position-relative");
         postContentContainer.appendChild(postFooterContainer);
+
+        const postFooterIcons = document.createElement("div");
+        postFooterIcons.classList.add(
+          "mt-4",
+          "mb-2",
+          "container",
+          "icons-container",
+          "p-0"
+        );
+        postFooterContainer.appendChild(postFooterIcons);
+
+        const likebutton = document.createElement("img");
+        likebutton.src = "/img/likebutton.png";
+        likebutton.classList.add("m-2", "me-0", "response-icon", "likebutton");
+        likebutton.style.cursor = "pointer";
+        likebutton.id = thisPostId.id;
+        likebutton.addEventListener("click", () => {
+          if (likebutton.src.includes("likebutton.png")) {
+            likebutton.src = "/img/likebuttonfull.png";
+          } else {
+            likebutton.src = "/img/likebutton.png";
+          }
+        });
+
+      
+        const likeCounter = document.createElement("p");
+        likeCounter.innerText = postInfo.likes;
+        likeCounter.classList.add("m-2", "p-0");
+      
+        const commentbutton = document.createElement("img");
+        commentbutton.src = "/img/commentbutton.png";
+        commentbutton.classList.add("m-2", "me-0", "response-icon");
+        commentbutton.style.cursor = "pointer";
+        commentbutton.id = "commentbutton" + postInfo.id;
+      
+        const commentCounter = document.createElement("p");
+        commentCounter.innerText = postInfo.comments;
+        commentCounter.classList.add("m-2", "p-0");
+      
+        postFooterIcons.appendChild(likebutton);
+        postFooterIcons.appendChild(likeCounter);
+        postFooterIcons.appendChild(commentbutton);
+        postFooterIcons.appendChild(commentCounter);
+      
+
 
 
 
