@@ -1,14 +1,11 @@
 import { fetchAllPosts } from "/js/API/get/allPosts.js";
 const allPosts = await fetchAllPosts();
 import { createLikeButton } from "/js/API/put/like.js";
-import {fetchMyProfile} from "/js/API/get/myProfile.js";
+import { fetchMyProfile } from "/js/API/get/myProfile.js";
 const myProfile = await fetchMyProfile();
 const myUsername = myProfile.name;
 import { editPost, deleteImg } from "/js/API/put/edit-posts.js";
 import { deletePost } from "/js/API/delete/delete-post.js";
-
-
-
 
 /**
  * Creates a feed card element based on the provided post data.
@@ -17,10 +14,8 @@ import { deletePost } from "/js/API/delete/delete-post.js";
  */
 export function createFeedCard(allPosts) {
   const feedCard = document.createElement("div");
-  feedCard.classList.add("card", "mb-4", "feedCard");
+  feedCard.classList.add("card", "mb-4", "feedCard", "w-100");
   feedCard.id = parseInt(allPosts.id, 10);
-
-
 
   const cardTextTop = document.createElement("div");
   cardTextTop.classList.add("card-text", "row", "p-4");
@@ -59,7 +54,7 @@ export function createFeedCard(allPosts) {
 
   const cardImage = document.createElement("img");
   cardImage.classList.add("card-img-top", "feed-image", "dropshadow");
-  cardImage.src=allPosts.pictureUpload;
+  cardImage.src = allPosts.pictureUpload;
   cardImage.alt = "Feed image";
   feedCard.appendChild(cardImage);
 
@@ -132,8 +127,6 @@ export function createFeedCard(allPosts) {
   cardTextBottomIcons.appendChild(commentbutton);
   cardTextBottomIcons.appendChild(commentCounter);
 
- 
-
   const commentContainer = document.createElement("div");
   commentContainer.classList.add(
     "comment-container",
@@ -177,7 +170,7 @@ export function createFeedCard(allPosts) {
     yesButton.innerText = "Yes";
     btnContainer.appendChild(yesButton);
 
-    if(yesButton){
+    if (yesButton) {
       yesButton.addEventListener("click", (event) => {
         deletePost(event);
       });
@@ -213,11 +206,11 @@ export function createFeedCard(allPosts) {
     editPostBodyButton.innerText = "Save";
     editPostBodyContainer.appendChild(editPostBodyButton);
 
-    editButton.addEventListener("click", (event)=> {
+    editButton.addEventListener("click", (event) => {
       editPost(event);
-    })
+    });
 
-/*     if(cardImage.src === allPosts.pictureUpload){
+    /*     if(cardImage.src === allPosts.pictureUpload){
       const deleteImgIconContainer = document.createElement("div");
       deleteImgIconContainer.classList.add("delete-img-icon-container");
       feedCard.appendChild(deleteImgIconContainer);
@@ -277,32 +270,32 @@ export function createFeedCard(allPosts) {
     const editMenuContainer = document.createElement("div");
     editMenuContainer.classList.add("edit-menu-container", "dropshadow");
     cardTextTop.appendChild(editMenuContainer);
-  
+
     const editMenu1 = document.createElement("div");
     editMenu1.id = `edit-btn-${allPosts.id}`;
     editMenu1.classList.add("edit-menu");
     editMenu1.innerText = "Edit";
     editMenuContainer.appendChild(editMenu1);
-  
+
     const editMenu2 = document.createElement("div");
     editMenu2.id = `delete-btn-${allPosts.id}`;
     editMenu2.classList.add("edit-menu");
     editMenu2.innerText = "Delete";
     editMenuContainer.appendChild(editMenu2);
 
-    noButton.addEventListener("click", ()=> {
+    noButton.addEventListener("click", () => {
       warningBoxContainer.style.display = "none";
-    })
+    });
 
-    editMenu2.addEventListener("click", ()=> {
-      if(warningBoxContainer.style.display === "block"){
+    editMenu2.addEventListener("click", () => {
+      if (warningBoxContainer.style.display === "block") {
         warningBoxContainer.style.display = "none";
       } else {
         warningBoxContainer.style.display = "block";
       }
-    })
+    });
 
-    editMenu1.addEventListener("click", ()=> {
+    editMenu1.addEventListener("click", () => {
       if (editPostBodyContainer.style.display === "block") {
         editPostBodyContainer.style.display = "none";
         editButton.src = "/img/edit.png";
@@ -311,9 +304,9 @@ export function createFeedCard(allPosts) {
         editButton.src = "/img/close.png";
         editMenuContainer.style.display = "none";
       }
-    })
-  
-    editButton.addEventListener("click", ()=> {
+    });
+
+    editButton.addEventListener("click", () => {
       if (editMenuContainer.style.display === "block") {
         editMenuContainer.style.display = "none";
         editButton.src = "/img/edit.png";
@@ -323,8 +316,7 @@ export function createFeedCard(allPosts) {
         editPostBodyContainer.style.display = "none";
       }
     });
-    }
-
+  }
 
   return feedCard;
 }

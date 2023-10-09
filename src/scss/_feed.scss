@@ -146,7 +146,6 @@ header {
 .feedCard {
   text-decoration: none;
   cursor: pointer;
-  max-width: 600px;
 }
 
 .tooltip {
@@ -199,12 +198,12 @@ header {
   display: none;
 }
 
-.edit-button{
+.edit-button {
   position: absolute;
-  right:30px;
+  right: 30px;
 }
 
-.edit-menu-container{
+.edit-menu-container {
   background-color: white;
   height: fit-content;
   width: 150px;
@@ -216,17 +215,17 @@ header {
   padding: 0;
 }
 
-.edit-menu{
+.edit-menu {
   border-bottom: 1px solid #ccc;
   width: 100%;
   padding-left: 10px;
-  &:hover{
+  &:hover {
     background-color: $primary;
     color: $white;
   }
 }
 
-.warning-box-container{
+.warning-box-container {
   min-width: 100%;
   min-height: 100%;
   background-color: #33333356;
@@ -237,7 +236,7 @@ header {
   z-index: 101;
 }
 
-.warning-box{
+.warning-box {
   background-color: white;
   border-radius: 20px;
   width: 90%;
@@ -253,10 +252,10 @@ header {
   padding: 50px;
   box-sizing: border-box;
   text-align: center;
-
 }
 
-.yes-button, .no-button{
+.yes-button,
+.no-button {
   background-color: $primary;
   color: $white;
   min-width: 80px;
@@ -264,13 +263,13 @@ header {
   padding: 10px;
   border-radius: 10px;
   margin: 10px;
-  &:hover{
+  &:hover {
     cursor: pointer;
     background-color: $red;
   }
 }
 
-.edit-post-container{
+.edit-post-container {
   min-width: 100%;
   max-height: 40%;
   background-color: #33333356;
@@ -282,19 +281,19 @@ header {
   z-index: 101;
 }
 
-.edit-post-input{
+.edit-post-input {
   width: 100%;
   box-sizing: border-box;
   outline: none;
   border: $pink 1px solid;
   border-radius: 20px;
   padding: 10px;
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
 
-.edit-post-button{
+.edit-post-button {
   z-index: 102;
   background-color: $primary;
   color: $white;
@@ -307,7 +306,7 @@ header {
   right: 0;
 }
 
-.delete-img-icon-container{
+.delete-img-icon-container {
   min-height: 50px;
   width: 100%;
   position: absolute;
@@ -316,15 +315,16 @@ header {
   justify-content: flex-end;
 }
 
-.delete-img-icon{
+.delete-img-icon {
   max-width: 20px;
   max-height: 20px;
   object-fit: cover;
   margin: 10px;
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 }
 
-
-
+.card-body {
+  padding: 20px;
+}
