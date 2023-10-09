@@ -18,7 +18,7 @@ import { deletePost } from "/js/API/delete/delete-post.js";
 export function createFeedCard(allPosts) {
   const feedCard = document.createElement("div");
   feedCard.classList.add("card", "mb-4", "feedCard");
-  feedCard.id = allPosts.id;
+  feedCard.id = parseInt(allPosts.id, 10);
 
 
 

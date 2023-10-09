@@ -1,132 +1,118 @@
+
+
 import { fetchAllPosts } from "/js/API/get/allPosts.js";
-import { fetchMyProfile } from "/js/API/get/myProfile.js";
-import { createFeedCard } from "/js/design/create-feed.card.js";
-const myProfile = await fetchMyProfile();
-const postData = await fetchAllPosts();
+
+export async function commentContainer() {
+  // Fetch all posts and wait for the data
+  const posts = await fetchAllPosts();
 
 
-
-export function commentsModal() {
-  const commentModuleContainer = document.querySelector(".comment-module-container");
-  commentModuleContainer.addEventListener("click", (e) => {
-    if (e.target === commentModuleContainer) {
-      commentModuleContainer.style.display = "none";
-    }
-  });
-  
-  const feedContainer = document.getElementById("feed-container"); 
-  feedContainer.addEventListener("click", (event) => {
+  // Function to handle the click event on a feedCard
+  function handleFeedCardClick(event) {
     const feedCard = event.target.closest(".feedCard");
-    commentModuleContainer.style.display = "flex";
-
     if (feedCard) {
-      const thisPostId = feedCard.id;
-      commentModuleContainer.id = "modal" + thisPostId;
-    }
-  });
+      const thisPostIdString = feedCard.id;
 
-  const moduleContent = document.createElement("div");
-  moduleContent.classList.add("module-content");
-  commentModuleContainer.appendChild(moduleContent);
+      // Convert the string ID to a number
+      const thisPostId = parseInt(thisPostIdString, 10);
 
-  const user = postData.thisPostId;
-  console.log(user);
-}
+      // Rest of your code...
 
+      // Find the post that matches thisPostId
+      const postInfo = posts.find(post => post.id === thisPostId);
 
+      if (postInfo) {
+        // Get a reference to the comment modal container
+        const commentModalContainer = document.getElementById("comment-modal");
 
+        // Clear the previous content in the modal
+        commentModalContainer.innerHTML = "";
 
+        // Rest of your code for creating the modal and displaying postInfo goes here
+        const moduleContent = document.createElement("div");
+        moduleContent.classList.add("module-content");
+        commentModalContainer.appendChild(moduleContent);
 
+        const postContentContainer = document.createElement("div");
+        postContentContainer.classList.add("card", "mb-4", "feedCard");
+        moduleContent.appendChild(postContentContainer);
 
+        const postHeadContainer = document.createElement("div");
+        postHeadContainer.classList.add("card-text", "row", "p-4");
+        postContentContainer.appendChild(postHeadContainer);
 
+        const postProfileImg = document.createElement("img");
+        postProfileImg.classList.add(
+          "rounded-circle",
+          "col",
+          "p-0",
+          "card-profile",
+          "border"
+        );
+        postProfileImg.src = postInfo.avatar || "../img/profile-placeholder.png";
+        postHeadContainer.appendChild(postProfileImg);
 
+        const profileHeadInfo = document.createElement("a");
+        profileHeadInfo.classList.add("col-9", "feedCard");
+        profileHeadInfo.href = `/pages/profile.html?id=${postInfo.name}`;
+        postHeadContainer.appendChild(profileHeadInfo);
 
+        const profileName = document.createElement("h5");
+        profileName.classList.add("m-0");
+        profileName.innerText = postInfo.username;
+        profileHeadInfo.appendChild(profileName);
 
+        const profileDate = document.createElement("p");
+        profileDate.classList.add("m-0", "nametag");
+        profileDate.innerText = postInfo.created;
+        profileHeadInfo.appendChild(profileDate);
 
-/* export function commentsModal() {
-  const feedCardContainer = document.querySelectorAll(".feed-container");
-  const commentModuleContainer = document.createElement("div");
-  commentModuleContainer.classList.add("comment-module-container");
-  commentModuleContainer.addEventListener("click", (e) => {
-    if (e.target === commentModuleContainer) {
-      commentModuleContainer.style.display = "none";
-    }
-  });
+        const postBodyImage = document.createElement("img");
+        postBodyImage.classList.add("card-img-top", "feed-image", "dropshadow");
+        postBodyImage.src = postInfo.pictureUpload;
+        postContentContainer.appendChild(postBodyImage);
 
-  feedCardContainer.appendChild(commentModuleContainer);
+        if(postInfo.pictureUpload === " " || postInfo.pictureUpload === null){
+          postBodyImage.style.display = "none";
+          postBodyImage.classList.remove("card-img-top", "feed-image", "dropshadow");
+        } else {
+          postBodyImage.style.display = "block";
+          postBodyImage.classList.add("card-img-top", "feed-image", "dropshadow");
+        }
 
   
 
-  // POST
-  const moduleContent = document.createElement("div");
-  moduleContent.classList.add("module-content");
-  moduleContent.id = "module-content" + users[0].id;
-  commentModuleContainer.appendChild(moduleContent);
+        const postBodyContainer = document.createElement("div");
+        postBodyContainer.classList.add("card-body");
+        postBodyContainer.innerText = postInfo.body;
+        postContentContainer.appendChild(postBodyContainer);
 
-  const user = users[1];
-  const feedCard = createFeedCard(user);
-  moduleContent.appendChild(feedCard);
+        const postFooterContainer = document.createElement("div");
+        postFooterContainer.classList.add("card-body", "mt-4", "position-relative");
+        postContentContainer.appendChild(postFooterContainer);
 
-  // COMMENTS
-  const commentContainer = document.createElement("div");
-  commentContainer.classList.add("comment-container");
-  moduleContent.appendChild(commentContainer);
 
-  const commentsContainer = document.createElement("div");
-  commentsContainer.classList.add("comments-container");
-  commentContainer.appendChild(commentsContainer);
 
-  const comment = document.createElement("div");
-  comment.classList.add("comment");
-  commentsContainer.appendChild(comment);
 
-  const commentProfileInfo = document.createElement("div");
-  commentProfileInfo.classList.add("comment-profile-info");
-  comment.appendChild(commentProfileInfo);
 
-  const commentProfilePic = document.createElement("div");
-  commentProfilePic.classList.add("comment-img");
-  commentProfilePic.style.backgroundImage = `url(${users[0].profilePicture})`;
+        // Add a click event listener to the comment modal container to close it when clicked
+        commentModalContainer.addEventListener("click", () => {
+          commentModalContainer.style.display = "none";
+        });
 
-  const commentUsername = document.createElement("div");
-  commentUsername.classList.add("comment-username");
-  const username = document.createElement("h6");
-  username.classList.add("m-0", "text-primary");
-  username.innerText = users[0].name;
-  commentUsername.appendChild(username);
+        // Check if the modal container is hidden or displayed and toggle its visibility
+        if (commentModalContainer.style.display === "none" || !commentModalContainer.style.display) {
+          commentModalContainer.style.display = "flex";
+        } else {
+          commentModalContainer.style.display = "none";
+        }
+      } else {
+        console.error(`Post with ID ${thisPostId} not found.`);
+      }
+    }
+  }
 
-  commentProfileInfo.appendChild(commentProfilePic);
-  commentProfileInfo.appendChild(commentUsername);
-
-  const commentContent = document.createElement("div");
-  commentContent.classList.add("comment-content");
-  const commentText = document.createElement("p");
-  commentText.innerText = "This is a comment on a post! This is cool!";
-  commentContent.appendChild(commentText);
-  comment.appendChild(commentContent);
-
-  // Leave comment
-
-  const leaveCommentContainer = document.createElement("div");
-  leaveCommentContainer.classList.add("leave-comment-container", "card");
-  moduleContent.appendChild(leaveCommentContainer);
-
-  const leaveComment = document.createElement("form");
-  leaveComment.classList.add("leave-comment");
-  leaveCommentContainer.appendChild(leaveComment);
-
-  const leaveCommentProfilePic = document.createElement("div");
-  leaveCommentProfilePic.classList.add("leave-comment-img");
-  leaveCommentProfilePic.style.backgroundImage = `url(${myProfile.avatar})`;
-  leaveComment.appendChild(leaveCommentProfilePic);
-
-  const leaveCommentInput = document.createElement("input");
-  leaveCommentInput.classList.add("leave-comment-input");
-  leaveCommentInput.placeholder = "Leave a comment...";
-  leaveComment.appendChild(leaveCommentInput);
-
-  const leaveCommentButton = document.createElement("img");
-  leaveCommentButton.classList.add("leave-comment-button");
-  leaveCommentButton.src = "/img/send.png";
-  leaveComment.appendChild(leaveCommentButton);
-} */
+  // Attach a single click event listener to a common ancestor element (e.g., feedContainer)
+  const feedContainer = document.getElementById("feed-container");
+  feedContainer.addEventListener('click', handleFeedCardClick);
+}
