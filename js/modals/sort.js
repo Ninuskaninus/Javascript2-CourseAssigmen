@@ -1,51 +1,34 @@
-import { sortNewestPosts, sortOldestPosts } from "./sortFunction.js";
-
 export function sortPosts() {
-  const feedContainer = document.getElementById("feed-container");
+  const feedHeadContainer = document.getElementById("feed-head-container");
   const sortContainer = document.createElement("div");
   sortContainer.classList.add("container", "p-0");
-  feedContainer.appendChild(sortContainer);
+  feedHeadContainer.appendChild(sortContainer);
 
   const sortRow = document.createElement("div");
-  sortRow.classList.add("row", "w-100", "mb-4", "mt-4", "p-0", "m-0");
+  sortRow.classList.add("container", "checkContainer", "card");
   sortContainer.appendChild(sortRow);
 
-  const sortBtnNewest = document.createElement("button");
-  sortBtnNewest.classList.add(
-    "btn",
-    "btn-light",
-    "dropshadow",
-    "rounded-pill",
-    "px-3",
-    "col",
-    "mb-2"
-  );
-  sortBtnNewest.innerText = "Sort by newest";
-  sortBtnNewest.addEventListener("click", () => {
-    sortNewestPosts();
-  });
+  const sortText = document.createElement("h6");
+  sortText.classList.add("nametag");
+  sortText.textContent = "Only show following";
+  sortRow.appendChild(sortText);
 
-  if (window.innerWidth < 350) {
-    sortBtnNewest.classList.remove("me-4");
-  } else {
-    sortBtnNewest.classList.add("me-4");
-  }
+  const checkboxContainer = document.createElement("div");
+  checkboxContainer.classList.add("checkboxContainer");
+  sortRow.appendChild(checkboxContainer);
 
-  sortRow.appendChild(sortBtnNewest);
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = "followingCheckbox";
+  checkbox.classList.add("checkbox");
+  checkboxContainer.appendChild(checkbox);
 
-  const sortBtnOldest = document.createElement("button");
-  sortBtnOldest.classList.add(
-    "btn",
-    "btn-light",
-    "dropshadow",
-    "rounded-pill",
-    "px-3",
-    "col",
-    "mb-2"
-  );
-  sortBtnOldest.innerText = "Sort by oldest";
-  sortBtnOldest.addEventListener("click", () => {
-    sortOldestPosts();
-  });
-  sortRow.appendChild(sortBtnOldest);
+  const checkboxLabel = document.createElement("label");
+  checkboxLabel.htmlFor = "followingCheckbox";
+  checkboxLabel.classList.add("checkbox");
+  checkboxContainer.appendChild(checkboxLabel);
+
+  const span = document.createElement("span");
+  span.classList.add("switch");
+  checkboxLabel.appendChild(span);
 }

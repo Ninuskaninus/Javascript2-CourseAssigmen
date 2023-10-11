@@ -2,10 +2,10 @@ import { fetchMyProfile } from "/js/API/get/myProfile.js";
 const myProfile = await fetchMyProfile();
 
 export function uploadContainer() {
-  const feedContainer = document.getElementById("feed-container");
+  const feedHeadContainer = document.getElementById("feed-head-container");
   const uploadContainer = document.createElement("div");
   uploadContainer.classList.add("card", "mb-4");
-  feedContainer.appendChild(uploadContainer);
+  feedHeadContainer.appendChild(uploadContainer);
 
   const uploadHead = document.createElement("div");
   uploadHead.classList.add("card-body", "d-flex", "align-content-center");

@@ -1,6 +1,12 @@
 import { submitComment } from "/js/API/put/submitComment.js";
 
-export function createModalContent(postInfo, thisPostId, comments, myProfile) {
+export function createModalContent(
+  postInfo,
+  thisPostId,
+  comments,
+  myProfile,
+  followingPosts
+) {
   const commentModalContainer = document.getElementById("comment-modal");
   commentModalContainer.innerHTML = "";
   const moduleContent = document.createElement("div");

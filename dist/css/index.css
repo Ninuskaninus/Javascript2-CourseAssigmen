@@ -12490,4 +12490,49 @@ header {
   background-color: white;
 }
 
+.checkContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.checkbox {
+  display: flex;
+  width: 50px;
+  height: 20px;
+  background-color: #fff;
+  border: #ff6d75 1px solid;
+  margin: 20px;
+  border-radius: 40px;
+  align-items: center;
+  cursor: pointer;
+  transition: 500ms background-color;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.switch {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: #ff6d75;
+  border-radius: 50%;
+  transition: 500ms background-color, 500ms transform;
+  margin-left: 2px;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox]:checked + .checkbox {
+  background-color: #ff6d75;
+}
+
+input[type=checkbox]:checked + .checkbox .switch {
+  background-color: #fff;
+  transform: translate(28px);
+}
+
 /*# sourceMappingURL=index.css.map */
