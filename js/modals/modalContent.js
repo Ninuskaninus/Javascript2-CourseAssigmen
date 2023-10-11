@@ -37,7 +37,6 @@ export function createModalContent(postInfo, thisPostId, comments, myProfile) {
 
   const profileHeadInfo = document.createElement("a");
   profileHeadInfo.classList.add("col-9", "feedCard");
-  console.log(profileHeadInfo);
   profileHeadInfo.href = "/profile/index.html?username=" + postInfo.username;
   postHeadContainer.appendChild(profileHeadInfo);
 

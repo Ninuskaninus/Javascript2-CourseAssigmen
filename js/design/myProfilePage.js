@@ -5,7 +5,6 @@ import { updateMyProfileHead } from "/js/design/myProfileHead.js";
 import { editBanner } from "/js/API/put/editBanner.js";
 import { editBtnModal } from "/js/modals/edit-btn.js";
 import { editImage } from "/js/API/put/editImage.js";
-import { displayImage } from "/js/modals/displayImageProfile.js";
 import { imageModal } from "/js/modals/image-modal.js";
 
 const myProfile = await fetchMyProfile();
@@ -13,7 +12,6 @@ const myPosts = await fetchMyPosts();
 
 //Modals and links
 editBtnModal();
-displayImage();
 
 //API put
 editBanner(myProfile);

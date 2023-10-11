@@ -12,9 +12,6 @@ export function apiPostNewPost() {
     const bodyValue = bodyElement.value;
     const mediaUrl = mediaElement.value;
 
-    console.log("Body Value:", bodyValue);
-    console.log("Media URL:", mediaUrl);
-
     const newPost = {
       title: "",
       body: bodyValue,

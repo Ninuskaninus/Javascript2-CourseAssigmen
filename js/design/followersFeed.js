@@ -33,7 +33,7 @@ export function insertFollowerContainerFeed() {
   followers.forEach((followers) => {
     const linkFollowers = document.createElement("a");
     linkFollowers.classList.add("col-sm-2", "me-1");
-    linkFollowers.href = `/profile/index.html?username=${followers.name}`;
+    linkFollowers.href = "/profile/index.html?username=" + followers.name;
     linkFollowers.classList.add("col-1");
     const followersIcon = document.createElement("img");
     followersIcon.classList.add("rounded-circle", "p-0", "border", "m-1");
@@ -70,7 +70,7 @@ export function insertFollowerContainerFeed() {
   following.forEach((following) => {
     const linkFollowing = document.createElement("a");
     linkFollowing.classList.add("col-sm-2", "me-1");
-    linkFollowing.href = `/profile/index.html?username= ${following.name}`;
+    linkFollowing.href = "/profile/index.html?username=" + following.name;
     const followingIcon = document.createElement("img");
     followingIcon.classList.add("rounded-circle", "p-0", "border", "m-1");
     followingIcon.style.width = "30px";

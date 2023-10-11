@@ -22,7 +22,6 @@ export function sortPosts() {
   );
   sortBtnNewest.innerText = "Sort by newest";
   sortBtnNewest.addEventListener("click", () => {
-    console.log("clicked");
     sortNewestPosts();
   });
 
@@ -46,7 +45,6 @@ export function sortPosts() {
   );
   sortBtnOldest.innerText = "Sort by oldest";
   sortBtnOldest.addEventListener("click", () => {
-    console.log("clicked");
     sortOldestPosts();
   });
   sortRow.appendChild(sortBtnOldest);
