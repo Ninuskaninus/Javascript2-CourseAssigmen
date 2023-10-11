@@ -1,34 +1,27 @@
-export function submitComment() {
-  const comment_url = `https://api.noroff.dev/api/v1/social/posts/3831/comment`;
+export function submitComment(postId) {
+  const comment_url = `https://api.noroff.dev/api/v1/social/posts/${postId}/comment`;
   const JWT = localStorage.getItem("accessToken");
-  const form = document.getElementById("leave-comment-form");
-  const body = document.getElementById("leave-comment-input");
+  const commentInput = document.getElementById("leave-comment-input");
 
-  form.addEventListener("submit", async function (event) {
-    event.preventDefault();
-    const bodyValue = body.value;
+  const newComment = {
+    body: commentInput.value,
+  };
 
-    const newComment = {
-      body: bodyValue,
+  try {
+    const commentData = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${JWT}`,
+      },
+      body: JSON.stringify(newComment),
     };
-
-    console.log(newComment);
-
-    try {
-      const postComment = {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${JWT}`,
-        },
-        body: JSON.stringify(newComment),
-      };
-      const response = await fetch(comment_url, postComment);
-      console.log(response);
-      const json = await response.json();
-      console.log(json);
-    } catch (error) {
-      console.log(error);
-    }
-  });
+    fetch(comment_url, commentData)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  } catch (error) {
+    console.log(error);
+  }
 }

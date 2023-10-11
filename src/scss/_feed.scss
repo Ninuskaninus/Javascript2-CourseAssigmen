@@ -29,6 +29,12 @@
 
 .nametag {
   color: $pink;
+  margin-bottom: 0;
+}
+
+.card-id {
+  color: $gray-400;
+  margin-top: 0;
 }
 
 .feed-body {
@@ -233,7 +239,7 @@ header {
   top: 0;
   border-radius: 20px;
   display: none;
-  z-index: 101;
+  z-index: 2002;
 }
 
 .warning-box {
@@ -327,4 +333,13 @@ header {
 
 .card-body {
   padding: 20px;
+}
+
+.module-handler {
+  min-height: 85px;
+  bottom: 0;
+  min-width: 100%;
+  background-color: transparent;
+  position: absolute;
+  z-index: 2000;
 }

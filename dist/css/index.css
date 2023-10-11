@@ -11931,6 +11931,12 @@ textarea.form-control-lg {
 
 .nametag {
   color: #ff6d75;
+  margin-bottom: 0;
+}
+
+.card-id {
+  color: rgba(33, 33, 33, 0.4);
+  margin-top: 0;
 }
 
 .feed-body {
@@ -12137,7 +12143,7 @@ header {
   top: 0;
   border-radius: 20px;
   display: none;
-  z-index: 101;
+  z-index: 2002;
 }
 
 .warning-box {
@@ -12234,6 +12240,15 @@ header {
   padding: 20px;
 }
 
+.module-handler {
+  min-height: 85px;
+  bottom: 0;
+  min-width: 100%;
+  background-color: transparent;
+  position: absolute;
+  z-index: 2000;
+}
+
 #follow-btn,
 #unfollow-btn {
   z-index: 5;
@@ -12264,7 +12279,7 @@ header {
   padding-bottom: 150px;
   display: none;
   overflow: hidden;
-  z-index: 1000;
+  z-index: 2002;
 }
 
 .comment-module-container ::-webkit-scrollbar {
@@ -12289,7 +12304,6 @@ header {
   flex-direction: column;
   justify-content: baseline;
   align-items: center;
-  z-index: 1005;
 }
 
 .image-container {
@@ -12416,37 +12430,39 @@ header {
   max-width: 30px;
   max-height: 30px;
   cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  margin-right: 10px;
 }
 
-/* CSS */
 .img-profile {
-  /* Your existing styles here */
-  transition: filter 0.2s; /* Optional: Add a transition effect for hover */
+  transition: filter 0.2s;
+  position: relative;
 }
 
 .img-profile:hover {
-  filter: brightness(60%) grayscale(100%); /* Add the desired filter effect */
+  filter: brightness(60%) grayscale(100%);
   cursor: pointer;
 }
 
 .img-profile:hover::before {
-  content: "Edit Post"; /* Edit Post text */
+  content: "Edit Post";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 20px; /* Adjust font size as needed */
-  opacity: 0;
-  pointer-events: none; /* Prevent text from being clickable */
-  background: rgba(0, 0, 0, 0.6); /* Transparent black overlay color */
-  padding: 10px 20px; /* Adjust padding as needed */
-  border-radius: 5px; /* Optional: Add rounded corners */
-  transition: opacity 0.2s; /* Optional: Add a transition effect for hover */
+  font-size: 20px;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: opacity 0.2s;
 }
 
 .img-profile:hover::before {
-  opacity: 1; /* Show overlay and text on hover */
+  opacity: 1;
 }
 
 .image-modal-container {
@@ -12454,15 +12470,23 @@ header {
   min-height: 100vh;
   height: auto; /* Change to auto */
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.466);
+  background-color: rgba(0, 0, 0, 0.664);
   top: 0;
   flex-direction: column;
-  justify-content: baseline;
+  justify-content: center;
   align-items: center;
   padding-top: 50px;
   padding-bottom: 150px;
   display: none;
   overflow: hidden; /* Hide overflow outside the modal */
+}
+
+.image-modal-content {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  padding: 20px;
+  background-color: white;
 }
 
 /*# sourceMappingURL=index.css.map */

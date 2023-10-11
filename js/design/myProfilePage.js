@@ -6,6 +6,7 @@ import { editBanner } from "/js/API/put/editBanner.js";
 import { editBtnModal } from "/js/modals/edit-btn.js";
 import { editImage } from "/js/API/put/editImage.js";
 import { displayImage } from "/js/modals/displayImageProfile.js";
+import { imageModal } from "/js/modals/image-modal.js";
 
 const myProfile = await fetchMyProfile();
 const myPosts = await fetchMyPosts();
@@ -36,11 +37,13 @@ const profileImgContainer = document.createElement("div");
 profileImgContainer.classList.add("container", "row", "p-3", "m-0");
 profileContainer.appendChild(profileImgContainer);
 
-myPosts.filter((post) => post.pictureUpload); // Filter out posts without images
+myPosts.filter((post) => post.pictureUpload);
 for (let i = 0; i < myPosts.length; i++) {
   const profileImg = document.createElement("img");
   profileImg.classList.add("img-profile", "p-0", "dropshadow", "col-sm", "m-2");
+  profileImg.id = myPosts[i].id;
   profileImg.style.objectFit = "cover";
   profileImg.src = myPosts[i].pictureUpload;
+  profileImg.addEventListener("click", imageModal);
   profileImgContainer.appendChild(profileImg);
 }

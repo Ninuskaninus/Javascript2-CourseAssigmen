@@ -17,6 +17,10 @@ export function createFeedCard(allPosts) {
   feedCard.classList.add("card", "mb-4", "feedCard", "w-100");
   feedCard.id = parseInt(allPosts.id, 10);
 
+  const moduleHandler = document.createElement("div");
+  moduleHandler.classList.add("module-handler");
+  feedCard.appendChild(moduleHandler);
+
   const cardTextTop = document.createElement("div");
   cardTextTop.classList.add("card-text", "row", "p-4");
   feedCard.appendChild(cardTextTop);
@@ -52,6 +56,12 @@ export function createFeedCard(allPosts) {
   cardProfileUsername.innerText = allPosts.updated;
   cardProfileInfo.appendChild(cardProfileUsername);
 
+  const cardId = document.createElement("span");
+  cardId.classList.add("card-id");
+  cardId.id = allPosts.id;
+  cardId.innerText = " " + "ID:" + " " + allPosts.id;
+  cardProfileUsername.appendChild(cardId);
+
   const cardImage = document.createElement("img");
   cardImage.classList.add("card-img-top", "feed-image", "dropshadow");
   cardImage.src = allPosts.pictureUpload;
@@ -59,7 +69,12 @@ export function createFeedCard(allPosts) {
   feedCard.appendChild(cardImage);
 
   const cardTextBottom = document.createElement("div");
-  cardTextBottom.classList.add("card-body", "mt-4", "position-relative");
+  cardTextBottom.classList.add(
+    "card-body",
+    "mt-4",
+    "position-relative",
+    "bottom-card"
+  );
   feedCard.appendChild(cardTextBottom);
 
   const cardTextBottomContent = document.createElement("p");
@@ -98,6 +113,7 @@ export function createFeedCard(allPosts) {
   const likebutton = document.createElement("img");
   likebutton.src = "/img/likebutton.png";
   likebutton.classList.add("m-2", "me-0", "response-icon", "likebutton");
+  likebutton.style.zIndex = "2001";
   likebutton.style.cursor = "pointer";
   likebutton.id = allPosts.id;
   likebutton.addEventListener("click", () => {
@@ -114,7 +130,7 @@ export function createFeedCard(allPosts) {
 
   const commentbutton = document.createElement("img");
   commentbutton.src = "/img/commentbutton.png";
-  commentbutton.classList.add("m-2", "me-0", "response-icon");
+  commentbutton.classList.add("m-2", "me-0", "response-icon", "comment-button");
   commentbutton.style.cursor = "pointer";
   commentbutton.id = "commentbutton" + allPosts.id;
 

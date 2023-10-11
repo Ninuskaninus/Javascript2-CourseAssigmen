@@ -1,3 +1,5 @@
+import { sortNewestPosts, sortOldestPosts } from "./sortFunction.js";
+
 export function sortPosts() {
   const feedContainer = document.getElementById("feed-container");
   const sortContainer = document.createElement("div");
@@ -19,6 +21,10 @@ export function sortPosts() {
     "mb-2"
   );
   sortBtnNewest.innerText = "Sort by newest";
+  sortBtnNewest.addEventListener("click", () => {
+    console.log("clicked");
+    sortNewestPosts();
+  });
 
   if (window.innerWidth < 350) {
     sortBtnNewest.classList.remove("me-4");
@@ -39,5 +45,9 @@ export function sortPosts() {
     "mb-2"
   );
   sortBtnOldest.innerText = "Sort by oldest";
+  sortBtnOldest.addEventListener("click", () => {
+    console.log("clicked");
+    sortOldestPosts();
+  });
   sortRow.appendChild(sortBtnOldest);
 }

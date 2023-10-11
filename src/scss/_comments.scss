@@ -11,7 +11,7 @@
   padding-bottom: 150px;
   display: none;
   overflow: hidden;
-  z-index: 1000;
+  z-index: 2002;
 }
 
 .comment-module-container ::-webkit-scrollbar {
@@ -36,7 +36,6 @@
   flex-direction: column;
   justify-content: baseline;
   align-items: center;
-  z-index: 1005;
 }
 
 .image-container {
@@ -165,4 +164,8 @@
   max-width: 30px;
   max-height: 30px;
   cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  margin-right: 10px;
 }
