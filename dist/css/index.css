@@ -12467,7 +12467,7 @@ header {
 
 .image-modal-container {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   height: auto; /* Change to auto */
   position: fixed;
   background-color: rgba(0, 0, 0, 0.664);
@@ -12479,11 +12479,12 @@ header {
   padding-bottom: 150px;
   display: none;
   overflow: hidden; /* Hide overflow outside the modal */
+  z-index: 5;
 }
 
 .image-modal-content {
-  width: 80%;
-  height: 80%;
+  max-width: 500px;
+  max-height: 1000px;
   object-fit: contain;
   padding: 20px;
   background-color: white;
