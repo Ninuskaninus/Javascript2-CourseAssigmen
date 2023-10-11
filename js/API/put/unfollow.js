@@ -13,29 +13,30 @@ unfollowBtn.innerHTML = "Unfollow";
 unfollowBtn.style.display = isFollowing ? "block" : "none";
 
 export function apiPostUnfollow() {
-    unfollowBtn.addEventListener("click", async () => {
-      const url =
-        "https://api.noroff.dev/api/v1/social/profiles/" + username + "/unfollow";
-      const JWT = localStorage.getItem("accessToken");
-      const data = {
-        profile: username,
-      };
-      const options = {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          Authorization: `Bearer ${JWT}`,
-          "Content-Type": "application/json",
-        },
-      };
-      fetch(url, options)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          if (data) {
-            unfollowBtn.style.display = "none";
-            followBtn.style.display = "block";
-          }
-        });
-    });
-  }
+  unfollowBtn.addEventListener("click", async () => {
+    const url =
+      "https://api.noroff.dev/api/v1/social/profiles/" + username + "/unfollow";
+    const JWT = localStorage.getItem("accessToken");
+    const data = {
+      profile: username,
+    };
+    const options = {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${JWT}`,
+        "Content-Type": "application/json",
+      },
+    };
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          unfollowBtn.style.display = "none";
+          followBtn.style.display = "block";
+        }
+        window.location.reload();
+      });
+  });
+}

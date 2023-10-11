@@ -3,6 +3,7 @@ import { fetchFollowing } from "/js/API/get/myProfile.js";
 const username = await getUsername();
 const following = await fetchFollowing();
 const isFollowing = following.some((followed) => followed.name === username);
+console.log(isFollowing);
 
 const followBtn = document.getElementById("follow-btn");
 followBtn.innerHTML = "Follow";
@@ -35,8 +36,7 @@ export function apiPostFollow() {
         if (data) {
           followBtn.style.display = "none";
         }
+        window.location.reload();
       });
   });
 }
-
-

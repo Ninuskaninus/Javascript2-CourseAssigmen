@@ -6,7 +6,6 @@ export function sortNewestPosts() {
   const newestPosts = [...posts].sort(
     (a, b) => new Date(b.created) - new Date(a.created)
   );
-  console.log(newestPosts);
   return newestPosts;
 }
 
@@ -15,6 +14,5 @@ export function sortOldestPosts() {
   const oldestPosts = [...posts].sort(
     (a, b) => new Date(a.created) - new Date(b.created)
   );
-  console.log(oldestPosts);
   return oldestPosts;
 }
