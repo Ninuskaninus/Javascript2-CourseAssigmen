@@ -64,7 +64,7 @@ export function createFeedCard(allPosts) {
 
   const cardImage = document.createElement("img");
   cardImage.classList.add("card-img-top", "feed-image", "dropshadow");
-  cardImage.src = allPosts.pictureUpload;
+  cardImage.src = allPosts.pictureUpload || "/img/profile-placeholder.png";
   cardImage.alt = "Feed image";
   feedCard.appendChild(cardImage);
 

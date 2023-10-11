@@ -13,6 +13,8 @@ export function uploadContainer() {
 
   const uploadProfilepic = document.createElement("img");
   uploadProfilepic.classList.add("rounded-circle", "me-4", "border");
+  uploadProfilepic.style.width = "50px";
+  uploadProfilepic.style.height = "50px";
   uploadProfilepic.src = myProfile.avatar;
   if (myProfile.avatar && myProfile.avatar.trim() !== "") {
     myProfile.src = myProfile.avatar;
