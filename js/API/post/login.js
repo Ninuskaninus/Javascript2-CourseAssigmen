@@ -1,38 +1,54 @@
-const API_urls = {
-  base_url: "https://api.noroff.dev",
-  register_url: "/api/v1/social/auth/register",
-  login_url: "/api/v1/social/auth/login",
-  posts_url: "/api/v1/social/posts",
-};
+export function apiPostLogin() {
+  const base_url = "https://api.noroff.dev/api/v1/social/auth/login";
 
-// LOGIN
+  const form = document.getElementById("loginForm");
+  const emailElement = document.getElementById("loginEmail");
+  const passwordElement = document.getElementById("loginPassword");
+  const loginBtn = document.getElementById("login-btn");
 
-const userLogin = {
-  name: "nina",
-  email: "ninamd@stud.noroff.no",
-  password: "ninaamdal12345",
-};
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-async function loginUser(url, data) {
-  try {
-    const postData = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+    const emailValue = emailElement.value;
+    const passwordValue = passwordElement.value;
+    
+    const userLogin = {
+      email: emailValue,
+      password: passwordValue,
     };
-    const response = await fetch(url, postData);
-    console.log(response);
-    const json = await response.json();
-    const accessToken = json.accessToken;
-    localStorage.setItem("accessToken", accessToken);
-    console.log(json);
 
-    return json;
-  } catch (error) {
-    console.log(error);
-  }
+    async function loginUser(base_url, data) {
+      try {
+        const postData = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userLogin),
+        };
+        const response = await fetch(base_url, postData);
+        console.log(response);
+        const json = await response.json();
+
+        if (response.ok) {
+          window.location.href = "feed/index.html";
+        } else {
+          console.log("Login failed. Handle the error.");
+        }
+
+        const accessToken = json.accessToken;
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("userName", json.name);
+
+        console.log(json);
+        return json;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    loginUser(base_url, userLogin);
+  });
 }
 
-loginUser(API_urls.base_url + API_urls.login_url, user);
+apiPostLogin();

@@ -13,7 +13,8 @@
             <img class="p-4 w-75" src="img/sasstrapp-logo.png" alt="">
           <form  
           class="p-4 container w-75"
-          minlength="8">
+          minlength="8"
+          id="loginForm">
             <div class="form-floating mb-3">
               <input
                 type="email"
@@ -36,7 +37,7 @@
               <label for="floatingPassword">Password</label>
             </div>
             <div class="container d-flex flex-column align-items-center w-100">
-            <button class="w-100 btn btn-lg btn-primary mt-4 login" id="login-btn" onclick="window.location='feed/index.html'">
+            <button class="w-100 btn btn-lg btn-primary mt-4 login" id="login-btn" action="submit">
               Log in
             </button>
             </div>
@@ -49,7 +50,6 @@
         </div>
       </div>
     </div>
-    <script src="js/API/post/login.js" type="modal"></script>
-    <script src="js/API/post/access-token.js" type="modal"></script>
+    <script type="module" src="js/API/post/login.js"></script>
   </body>
 </html>

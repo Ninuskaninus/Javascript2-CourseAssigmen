@@ -1,9 +1,14 @@
-#follow-btn {
+#follow-btn,
+#unfollow-btn {
   z-index: 5;
   bottom: -50px;
   background-color: $pink;
   width: 150px;
   color: $white;
+}
+
+#unfollow-btn {
+  z-index: 4;
 }
 
 .img-profile {

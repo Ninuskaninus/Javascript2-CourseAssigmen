@@ -1,44 +1,54 @@
 const API_urls = {
   base_url: "https://api.noroff.dev",
   register_url: "/api/v1/social/auth/register",
-  login_url: "/api/v1/social/auth/login",
-  posts_url: "/api/v1/social/posts",
 };
 
-//REGISTER
+const form = document.getElementById("registerForm");
+const nameElement = document.getElementById("registerUsername");
+const emailElement = document.getElementById("registerEmail");
+const passwordElement = document.getElementById("registerPassword");
+const submitBtn = document.getElementById("create-user-btn");
 
-async function registerUser(url, data) {
+form.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const nameValue = nameElement.value;
+  const emailValue = emailElement.value;
+  const passwordValue = passwordElement.value;
+
+  const newUser = {
+    name: nameValue,
+    email: emailValue,
+    password: passwordValue,
+  };
+
   try {
     const postData = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(newUser),
     };
-
-    const response = await fetch(url, postData);
+    const response = await fetch(
+      API_urls.base_url + API_urls.register_url,
+      postData
+    );
     console.log(response);
     const json = await response.json();
+
+    if (response.ok) {
+      window.location.href = "../index.html";
+    } else {
+      console.log("Login failed. Handle the error.");
+    }
+
+    const accessToken = json.accessToken;
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("userName", json.name);
+
     console.log(json);
-    return json;
   } catch (error) {
     console.log(error);
   }
-}
-
-let userForm = document.querySelector("#registerForm");
-userForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formData = new FormData(userForm);
-  const name = String(formData.get("name")) || "";
-  const email = String(formData.get("email")) || "";
-  const password = String(formData.get("password")) || "";
-  const user = {
-    name: name,
-    email: email,
-    password: password,
-  };
-
-  registerUser(API_urls.base_url + API_urls.register_url, user);
 });

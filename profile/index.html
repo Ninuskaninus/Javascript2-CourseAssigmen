@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="hamburger-nav">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/index.html">Home</a>
+              <a class="nav-link" href="/index.html">Log out</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/feed/index.html">Feed</a>
@@ -63,9 +63,14 @@
           class="container w-100 p-0 m-0 feed-head d-flex justify-content-center position-relative profile-head-img"
           id="head-img"
         >
-          <button class="btn primary position-absolute" id="follow-btn">
-            Follow
-          </button>
+          <button
+            class="btn primary position-absolute"
+            id="follow-btn"
+          ></button>
+          <button
+            class="btn primary position-absolute"
+            id="unfollow-btn"
+          ></button>
           <img
             src=""
             alt=""
@@ -85,10 +90,14 @@
             >
               <div class="row p-2">
                 <div class="col pl-2 m-0 following-container">
-                  <p class="m-0 text-center">Followers <b>35</b></p>
+                  <p class="m-0 text-center">
+                    Followers <b id="followers"></b>
+                  </p>
                 </div>
                 <div class="col pl-3 m-0 following-container">
-                  <p class="m-0 text-center">Following <b>40</b></p>
+                  <p class="m-0 text-center">
+                    Following <b id="following"></b>
+                  </p>
                 </div>
               </div>
             </div>
@@ -125,9 +134,10 @@
         ></div>
       </div>
     </div>
-    <script type="module" src="/js/design/profile.js"></script>
-    <script type="module" src="/js/design/followers.js"></script>
-    <script type="module" src="/js/users/users.js"></script>
-    <script type="module" src="/js/design/head.js"></script>
+    <div class="image-modal-container" id="image-modal">
+      <img class="image-modal-content" id="modal-img" />
+    </div>
+    <script type="module" src="/js/design/userProfile.js"></script>
+    <script type="module" src="/js/design/myProfilePage.js"></script>
   </body>
 </html>
