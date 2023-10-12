@@ -10,6 +10,8 @@ import { apiPostNewPost } from "/js/API/post/newPost.js";
 import { commentContainer } from "/js/modals/comments-modal.js";
 import { sortFunction } from "/js/modals/sortFunction.js";
 import { fetchMyFollowersPosts } from "/js/API/get/myFollowingPosts.js";
+import { searchBarContainer } from "/js/design/searchbar.js";
+import { searchFunction } from "/js/modals/searchFunction.js";
 
 const myProfile = await fetchMyProfile();
 const allPosts = await fetchAllPosts();
@@ -23,6 +25,7 @@ const feedHeadContainer = document.getElementById("feed-head-container");
 uploadContainer(feedHeadContainer);
 apiPostNewPost();
 
+
 // Shown profile
 updateMyProfileHead(myProfile);
 updateNavbarProfile(myProfile);
@@ -33,6 +36,9 @@ insertFollowerContainerFeed();
 // Sort
 sortPosts(feedHeadContainer);
 sortFunction(feedContainer, allPosts, followingPosts, createFeedCard);
+searchBarContainer(feedHeadContainer);
+searchFunction(feedHeadContainer, allPosts, followingPosts, createFeedCard);
+
 
 allPosts.forEach((post) => {
   const feedCard = createFeedCard(post);
