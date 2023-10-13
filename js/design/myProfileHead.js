@@ -1,6 +1,5 @@
 import { fetchMyProfile } from "/js/api/get/myProfile.js";
 const myPosts = await fetchMyProfile();
-console.log(myPosts);
 
 export function updateMyProfileHead() {
   const feedHeadImg = document.getElementById("head-img");

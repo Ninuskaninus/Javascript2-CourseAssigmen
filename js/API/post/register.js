@@ -34,7 +34,6 @@ form.addEventListener("submit", async function (event) {
       API_urls.base_url + API_urls.register_url,
       postData
     );
-    console.log(response);
     const json = await response.json();
 
     if (response.ok) {

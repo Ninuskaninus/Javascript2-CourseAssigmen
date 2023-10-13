@@ -51,7 +51,6 @@ export function getUserPosts(searchBar) {
                   comments: post._count?.comments || 0,
                 };
             });
-            console.log(userPost);
             return userPost;
           } else {
             console.error("API response is not an array of posts.");
@@ -76,7 +75,6 @@ export function getUserPosts(searchBar) {
                 following: userInfo._count?.following || 0,
                 posts: userInfo._count?.posts || 0,
             };
-            console.log(userProfile);
             return userProfile;
           }
         }),

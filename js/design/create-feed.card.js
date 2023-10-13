@@ -279,7 +279,7 @@ export function createFeedCard(allPosts) {
  
       deleteImgYesButton.addEventListener("click", (event)=> {
         deleteImg(event);
-        console.log(feedCard.id);
+
       }) 
     } */
 

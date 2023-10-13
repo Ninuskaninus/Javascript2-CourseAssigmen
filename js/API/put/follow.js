@@ -32,7 +32,6 @@ export function apiPostFollow() {
     fetch(url, options)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data) {
           followBtn.style.display = "none";
         }

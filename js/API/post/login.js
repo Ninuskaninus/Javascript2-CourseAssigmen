@@ -27,7 +27,6 @@ export function apiPostLogin() {
           body: JSON.stringify(userLogin),
         };
         const response = await fetch(base_url, postData);
-        console.log(response);
         const json = await response.json();
 
         if (response.ok) {
@@ -40,7 +39,6 @@ export function apiPostLogin() {
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("userName", json.name);
 
-        console.log(json);
         return json;
       } catch (error) {
         console.log(error);

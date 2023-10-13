@@ -31,7 +31,7 @@ export function apiPostUnfollow() {
     fetch(url, options)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+
         if (data) {
           unfollowBtn.style.display = "none";
           followBtn.style.display = "block";

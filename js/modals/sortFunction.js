@@ -23,7 +23,6 @@ export function sortFunction(
 export function myPostsSort(
   feedHeadContainer, allPosts, createFeedCard, myPosts, feedContainer, myProfile) {
   const mypostsCheckbox = document.getElementById("mypostsCheckbox");
-  console.log(mypostsCheckbox);
   mypostsCheckbox.addEventListener("change", () => {
     if (mypostsCheckbox.checked) {
       feedContainer.innerHTML = "";

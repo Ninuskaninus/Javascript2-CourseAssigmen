@@ -29,9 +29,9 @@ export function editBanner() {
         body: JSON.stringify(newBanner),
       };
       const response = await fetch(base_url, putData);
-      console.log(response);
+
       const json = await response.json();
-      console.log(json);
+
     } catch (error) {
       console.log(error);
     }

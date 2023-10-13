@@ -19,7 +19,7 @@ export function submitComment(postId) {
     fetch(comment_url, commentData)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+
       });
   } catch (error) {
     console.log(error);

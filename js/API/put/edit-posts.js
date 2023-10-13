@@ -54,9 +54,8 @@ export async function deleteImg(event){
                 },
             };
             const response = await fetch(edit_url, noImg);
-            console.log(response);
             const json = await response.json();
-            console.log(json);
+
         } catch (error) {
             console.log(error);
         }
