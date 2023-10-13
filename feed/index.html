@@ -2,68 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../dist/css/index.css" />
     <link rel="icon" type="image/png" sizes="16x16" href="/img/sasstrapfav.png">
     <title>SassTrap | Feed</title>
   </head>
   <body class="feed-body">
-    <nav class="navbar navbar-expand-md dropshadow">
-      <div class="container w-100">
-        <a class="navbar-brand" href="/feed/index.html"
-          ><img class="header-logo" src="/img/sasstrapLogoPink.png" alt=""
-        /></a>
-        <button
-          class="navbar-toggler btn-toggle"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          data-bs-target="#hamburger-nav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="hamburger-nav">
-          <ul class="navbar-nav mr-auto container">
-            <li class="nav-item active">
-              <a class="nav-link" href="/index.html">Log out</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/feed/index.html">Feed</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                id="my-profile-link"
-                href="/profile/myProfile.html"
-                >My profile</a
-              >
-            </li>
-          </ul>
-          <div class="d-flex justify-content-end w-100">
-            <form class="form-inline my-2 my-md-0">
-              <input class="form-control" type="text" placeholder="Search" />
-            </form>
-          </div>
-          <a
-            class="p-0 col-1 d-flex justify-content-center align-items-center"
-            href="/profile/myProfile.html"
-          >
-            <img
-              id="profile-pic-header"
-              src=""
-              alt="mdo"
-              width="32"
-              height="32"
-              class="rounded-circle"
-              object-fit="cover"
-          /></a>
-        </div>
-      </div>
-    </nav>
+    <nav class="navbar dropshadow" id="navigation"></nav>
     <div class="container-sm p-3 pt-0" id="content-container">
       <div id="header-container">
         <div
@@ -102,7 +46,6 @@
             </div>
             <div class="col-sm mt-5" id="name-container">
               <h1 class="text-center font-weight-bold" id="full-name"></h1>
-              <h6 class="text-center nametag" id="username"></h6>
             </div>
             <div
               class="col-sm d-flex align-items-end justify-content-center pt-2 mb-2"

@@ -12,6 +12,11 @@ const unfollowBtn = document.getElementById("unfollow-btn");
 unfollowBtn.innerHTML = "Unfollow";
 unfollowBtn.style.display = isFollowing ? "block" : "none";
 
+/**
+ * Sends a PUT request to the API to unfollow a user.
+ * @function
+ * @returns {void}
+ */
 export function apiPostUnfollow() {
   unfollowBtn.addEventListener("click", async () => {
     const url =

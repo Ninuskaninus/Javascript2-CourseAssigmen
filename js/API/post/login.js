@@ -1,5 +1,11 @@
 localStorage.clear();
 
+/**
+ * Sends a POST request to the Noroff API to log in a user.
+ *
+ * @function
+ * @exports apiPostLogin
+ */
 export function apiPostLogin() {
   const base_url = "https://api.noroff.dev/api/v1/social/auth/login";
 

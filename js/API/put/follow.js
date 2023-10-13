@@ -13,6 +13,11 @@ const unfollowBtn = document.getElementById("unfollow-btn");
 unfollowBtn.innerHTML = "Unfollow";
 unfollowBtn.style.display = isFollowing ? "block" : "none";
 
+/**
+ * Sends a PUT request to follow a user's profile.
+ * @function
+ * @returns {void}
+ */
 export function apiPostFollow() {
   followBtn.addEventListener("click", async () => {
     const url =

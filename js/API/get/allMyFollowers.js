@@ -2,6 +2,12 @@ import { fetchFollowers, fetchFollowing } from "/js/API/get/myProfile.js";
 const followers = await fetchFollowers();
 const following = await fetchFollowing();
 
+/**
+ * Inserts a container for the user's followers and following with their avatars and links to their profiles.
+ * @function
+ * @name insertFollowerContainerProfile
+ * @returns {void}
+ */
 export function insertFollowerContainerProfile() {
   //Followers
   const followersContainer = document.getElementById("followers-container");
@@ -27,7 +33,7 @@ export function insertFollowerContainerProfile() {
 
   followers.forEach((followers) => {
     const linkFollowers = document.createElement("a");
-    linkFollowers.classList.add("col-sm-2", "me-1");
+    linkFollowers.classList.add("col-sm-2", "me-1", "col-1");
     linkFollowers.href = "/profile/index.html?username=" + followers.name;
     linkFollowers.classList.add("col-1");
     const followersIcon = document.createElement("img");
@@ -64,7 +70,7 @@ export function insertFollowerContainerProfile() {
 
   following.forEach((following) => {
     const linkFollowing = document.createElement("a");
-    linkFollowing.classList.add("col-sm-2", "me-1");
+    linkFollowing.classList.add("col-sm-2", "me-1", "col-1");
     linkFollowing.href = "/profile/index.html?username=" + following.name;
     const followingIcon = document.createElement("img");
     followingIcon.classList.add("rounded-circle", "p-0", "border", "m-1");

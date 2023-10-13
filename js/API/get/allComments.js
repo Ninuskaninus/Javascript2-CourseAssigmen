@@ -2,6 +2,10 @@ const base_url =
   "https://api.noroff.dev/api/v1/social/posts?_author=true&_comments=true";
 const JWT = localStorage.getItem("accessToken");
 
+/**
+ * Fetches all comments from the API.
+ * @returns {Promise<Array<Object>>} A promise that resolves to an array of comment objects.
+ */
 export function getComment() {
   return fetch(base_url, {
     headers: {

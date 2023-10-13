@@ -1,14 +1,17 @@
 import { fetchMyProfile, fetchMyPosts } from "/js/API/get/myProfile.js";
-import { updateNavbarProfile } from "/js/design/navbar_profile.js";
 import { insertFollowerContainerProfile } from "/js/API/get/allMyFollowers.js";
 import { updateMyProfileHead } from "/js/design/myProfileHead.js";
 import { editBanner } from "/js/API/put/editBanner.js";
 import { editBtnModal } from "/js/modals/edit-btn.js";
 import { editImage } from "/js/API/put/editImage.js";
 import { imageModal } from "/js/modals/image-modal.js";
+import { navBar } from "/js/design/navigation.js";
 
 const myProfile = await fetchMyProfile();
 const myPosts = await fetchMyPosts();
+
+//Navigation
+navBar();
 
 //Modals and links
 editBtnModal();
@@ -17,7 +20,6 @@ editBtnModal();
 editBanner(myProfile);
 editImage(myProfile);
 
-updateNavbarProfile(myProfile);
 insertFollowerContainerProfile();
 updateMyProfileHead(myProfile);
 

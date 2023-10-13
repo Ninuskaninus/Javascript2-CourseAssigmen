@@ -1,3 +1,8 @@
+/**
+ * Retrieves user posts and user information from the Noroff API using the provided search input.
+ * @param {HTMLInputElement} searchBar - The search input element.
+ * @returns {Promise<{userPosts: Array<Object>, userInfo: Object}>} - A promise that resolves to an object containing an array of user posts and user information.
+ */
 export function getUserPosts(searchBar) {
     const searchInput = searchBar.value;
     const user_post_url = `https://api.noroff.dev/api/v1/social/profiles/${searchInput}/posts`;

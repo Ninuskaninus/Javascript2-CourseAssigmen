@@ -8,6 +8,18 @@ export function updateMyProfileHead() {
   const profilePic = document.getElementById("profile-pic");
   profilePic.src = myPosts.avatar || "/img/profile-placeholder.png";
 
+  const nameContainer = document.getElementById("name-container");
+  function updateNameContainerMargin() {
+    if (window.innerWidth < 575) {
+      nameContainer.classList.remove("mt-5");
+    } else {
+      nameContainer.classList.add("mt-5");
+    }
+  }
+  updateNameContainerMargin();
+  window.addEventListener("resize", updateNameContainerMargin);
+  
+
   const profileName = document.getElementById("full-name");
   profileName.classList.add("text-primary");
   profileName.innerText = myPosts.name;

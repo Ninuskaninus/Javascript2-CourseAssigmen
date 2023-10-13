@@ -2,6 +2,11 @@ import { fetchMyProfile } from "/js/API/get/myProfile.js";
 const myProfile = await fetchMyProfile();
 const username = myProfile.name;
 
+/**
+ * Sends a PUT request to update the user's profile image.
+ * @function
+ * @returns {void}
+ */
 export function editImage() {
   const base_url =
     "https://api.noroff.dev/api/v1/social/profiles/" + username + "/media";

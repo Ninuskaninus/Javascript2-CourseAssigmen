@@ -1,3 +1,8 @@
+/**
+ * Deletes a post from the API.
+ * @param {Event} event - The event object.
+ * @returns {Promise<void>} - A Promise that resolves when the post is deleted.
+ */
 export async function deletePost(event) {
     try {
         const thisPostId = event.target.closest(".feedCard").id;

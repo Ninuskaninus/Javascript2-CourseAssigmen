@@ -126,25 +126,27 @@ export function fetchFollowers() {
 
 // MY FOLLOWING
 
-export function fetchFollowing() {
-  return fetch(followers_url, {
+/**
+ * Fetches the list of users that the authenticated user is following.
+ * @returns {Promise<Array<{name: string, avatar: string}>>} An array of objects containing the name and avatar URL of each user.
+ */
+export async function fetchFollowing() {
+  const response = await fetch(followers_url, {
     headers: {
       Authorization: `Bearer ${JWT}`,
     },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.following && Array.isArray(data.following)) {
-        const following = data.following.map((followed) => ({
-          name: followed.name,
-          avatar: followed.avatar,
-        }));
-        return following;
-      } else {
-        console.error(
-          "API response does not have the expected structure for following."
-        );
-        return [];
-      }
-    });
+  });
+  const data = await response.json();
+  if (data.following && Array.isArray(data.following)) {
+    const following = data.following.map((followed) => ({
+      name: followed.name,
+      avatar: followed.avatar,
+    }));
+    return following;
+  } else {
+    console.error(
+      "API response does not have the expected structure for following."
+    );
+    return [];
+  }
 }
