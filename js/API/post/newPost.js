@@ -28,9 +28,9 @@ export function apiPostNewPost() {
         body: JSON.stringify(newPost),
       };
       const response = await fetch(base_url, postData);
-      console.log(response);
+
       const json = await response.json();
-      console.log(json);
+
     } catch (error) {
       console.log(error);
     }

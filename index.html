@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/dist/css/index.css" />
-    <link rel="favicon" href="" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/sasstrapfav.png">
     <title>SassTrap | Log in</title>
   </head>
   <body class="bg-primary">
@@ -24,6 +24,9 @@
                 required
               />
               <label for="floatingInput">Email address</label>
+              <div class="danger-card" id="dager-card-email">
+              <img class="warning-icon" src="img/warning.png" alt=""><p class="" id="loginEmailError">Wrong email</p>
+              </div>
             </div>
             <div class="form-floating mb-3">
               <input
@@ -35,6 +38,9 @@
                 required
               />
               <label for="floatingPassword">Password</label>
+              <div class="danger-card" id="dager-card-password">
+                <img class="warning-icon" src="img/warning.png" alt=""><p class="" id="loginEmailError">Wrong password</p>
+                </div>
             </div>
             <div class="container d-flex flex-column align-items-center w-100">
             <button class="w-100 btn btn-lg btn-primary mt-4 login" id="login-btn" action="submit">

@@ -19,3 +19,21 @@ export function sortFunction(
     }
   });
 }
+
+export function myPostsSort(
+  feedHeadContainer, allPosts, createFeedCard, myPosts, feedContainer, myProfile) {
+  const mypostsCheckbox = document.getElementById("mypostsCheckbox");
+  mypostsCheckbox.addEventListener("change", () => {
+    if (mypostsCheckbox.checked) {
+      feedContainer.innerHTML = "";
+      myPosts.forEach((post) => {
+        feedContainer.appendChild(createFeedCard(post));
+      });
+    } else {
+      feedContainer.innerHTML = "";
+      allPosts.forEach((post) => {
+        feedContainer.appendChild(createFeedCard(post));
+      });
+    }
+  });
+}

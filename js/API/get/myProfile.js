@@ -17,18 +17,6 @@ export async function fetchMyProfile() {
       }
       return response.json();
     })
-    .then((data) => {
-      const myProfile = {
-        avatar: data.avatar,
-        banner: data.banner,
-        name: data.name,
-        email: data.email,
-        followers: data._count?.followers || 0,
-        following: data._count?.following || 0,
-        posts: data._count?.posts || 0,
-      };
-      return myProfile;
-    })
     .catch((error) => {
       console.error("Error fetching profile:", error);
       throw error; // Re-throw the error for handling elsewhere if needed
@@ -38,9 +26,11 @@ export async function fetchMyProfile() {
 // MY POSTS
 const myPosts_url = `${base_url}${users_url}/posts`;
 export async function fetchMyPosts() {
+  const myProfile = await fetchMyProfile(); // Fetch the profile data
+
   return fetch(myPosts_url, {
     headers: {
-      Authorization: `Bearer ${JWT}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   })
     .then((response) => response.json())
@@ -77,16 +67,18 @@ export async function fetchMyPosts() {
 
           return {
             title: post.title,
-            created: formattedCreatedDate, // Use the formatted date
+            created: formattedCreatedDate,
             id: post.id,
             pictureUpload: post.media,
             tags: post.tags,
             body: post.body,
-            updated: formattedUpdatedDate, // Use the formatted date
+            updated: formattedUpdatedDate,
             likes: post._count?.reactions || 0,
             comments: post._count?.comments || 0,
-            profilePicture: post._author?.avatar,
-            username: post._author?.name,
+            profilePicture: myProfile.avatar, // Use the profile data for author info
+            username: myProfile.name, // Use the profile data for author info
+            followers: myProfile._count.followers,
+            following: myProfile._count.following,
           };
         });
         return myPosts;
@@ -100,6 +92,7 @@ export async function fetchMyPosts() {
       return [];
     });
 }
+
 
 // MY FOLLOWERS
 const followers_url =

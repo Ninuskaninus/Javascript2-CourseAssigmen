@@ -34,7 +34,3 @@ export function createLikeButton(allPosts) {
   return likebutton;
 }
 
-export function likePost() {}
-
-/*   const url = `https://api.noroff.dev/api/v1/social/posts/${postId}/react/👍`; */
-const JWT = localStorage.getItem("accessToken");
