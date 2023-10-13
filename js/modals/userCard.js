@@ -4,6 +4,7 @@ export function userCard(userInfo){
     const feedHeadContainer = document.getElementById("feed-head-container");
     const userCardContainer = document.createElement("div");
     userCardContainer.classList.add("card", "profile-card-container", "mb-2");
+    userCardContainer.id = "user-card-container";
     feedHeadContainer.appendChild(userCardContainer);
 
     if (userInfo) {
@@ -18,7 +19,7 @@ export function userCard(userInfo){
 
       const userNameInfo = document.createElement("h4");
       userNameInfo.classList.add("nametag");
-      userNameInfo.innerText = userInfo.name || "User Name not found"; // Display "User Name not found" if the name is not present
+      userNameInfo.innerText = userInfo.name || "Username not found"; // Display "User Name not found" if the name is not present
       userCardInfoContainer.appendChild(userNameInfo);
 
       const userButton = document.createElement("a");

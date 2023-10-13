@@ -7,7 +7,7 @@ export function searchFunction() {
 
   searchbarForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-
+    
     const userProfile = await getUserPosts(searchBar);
 
     userCard(userProfile.userInfo);
