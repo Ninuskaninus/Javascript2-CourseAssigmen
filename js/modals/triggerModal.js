@@ -1,3 +1,8 @@
+/**
+ * Adds an event listener to the comment modal container and toggles its display style between "none" and "flex".
+ * @function
+ * @returns {void}
+ */
 export function triggerModal() {
   const commentModalContainer = document.getElementById("comment-modal");
   commentModalContainer.addEventListener("click", () => {

@@ -11878,7 +11878,6 @@ textarea.form-control-lg {
   box-shadow: 4px 9px 4px -1px rgba(216, 44, 53, 0.37);
   color: #d63d46;
   height: 60px;
-  font-weight: 600;
 }
 
 .createUser:hover {
@@ -11969,6 +11968,8 @@ textarea.form-control-lg {
 .card-profile {
   max-height: 50px;
   max-width: 50px;
+  min-height: 50px;
+  min-width: 50px;
   object-fit: cover;
 }
 

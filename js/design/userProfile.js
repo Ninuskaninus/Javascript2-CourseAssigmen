@@ -1,5 +1,4 @@
-import { fetchMyProfile, fetchFollowing } from "/js/API/get/myProfile.js";
-import { updateNavbarProfile } from "/js/design/navbar_profile.js";
+import { fetchMyProfile } from "/js/API/get/myProfile.js";
 import { insertFollowerContainerProfile } from "/js/design/followersProfile.js";
 import { updateUserProfileHead } from "/js/design/userProfileHead.js";
 import { fetchPosts } from "/js/API/get/allProfiles.js";
@@ -16,7 +15,6 @@ const username = await getUsername();
 apiPostFollow();
 apiPostUnfollow();
 updateUserProfileHead(myProfile);
-updateNavbarProfile(myProfile);
 insertFollowerContainerProfile();
 navBar();
 
