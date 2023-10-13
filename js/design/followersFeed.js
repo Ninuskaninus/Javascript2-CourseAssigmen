@@ -22,7 +22,7 @@ export function insertFollowerContainerFeed() {
   followersCardHeaderText.classList.add("nametag", "mb-3", "pt-3");
   followersCardHeaderText.innerText = "Followers";
   const followersCount = document.createElement("b");
-  followersCount.innerText = " " + myProfile.followers;
+  followersCount.innerText = " " + myProfile._count.followers;
   followersCardHeaderText.appendChild(followersCount);
   followersCardHeader.appendChild(followersCardHeaderText);
 
@@ -59,7 +59,7 @@ export function insertFollowerContainerFeed() {
   followingCardHeaderText.classList.add("nametag", "mb-3", "pt-3");
   followingCardHeaderText.innerText = "Following";
   const followingCount = document.createElement("b");
-  followingCount.innerText = " " + myProfile.following;
+  followingCount.innerText = " " + myProfile._count.following;
   followingCardHeaderText.appendChild(followingCount);
   followingCardHeader.appendChild(followingCardHeaderText);
 

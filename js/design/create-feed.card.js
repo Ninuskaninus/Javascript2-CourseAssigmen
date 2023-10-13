@@ -1,10 +1,9 @@
 import { fetchAllPosts } from "/js/API/get/allPosts.js";
 const allPosts = await fetchAllPosts();
-import { createLikeButton } from "/js/API/put/like.js";
 import { fetchMyProfile } from "/js/API/get/myProfile.js";
 const myProfile = await fetchMyProfile();
 const myUsername = myProfile.name;
-import { editPost, deleteImg } from "/js/API/put/edit-posts.js";
+import { editPost } from "/js/API/put/edit-posts.js";
 import { deletePost } from "/js/API/delete/delete-post.js";
 
 /**
@@ -336,3 +335,5 @@ export function createFeedCard(allPosts) {
 
   return feedCard;
 }
+
+

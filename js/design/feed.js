@@ -14,6 +14,7 @@ import { searchBarContainer } from "/js/design/searchbar.js";
 import { searchFunction } from "/js/modals/searchFunction.js";
 import { filterMyPosts} from "/js/modals/sortMyPosts.js"
 
+
 const myProfile = await fetchMyProfile();
 const allPosts = await fetchAllPosts();
 const followingPosts = await fetchMyFollowersPosts();
@@ -51,5 +52,6 @@ allPosts.forEach((post) => {
   feedContainer.appendChild(feedCard);
 });
 
-// Feed
+// Reactions
 commentContainer();
+

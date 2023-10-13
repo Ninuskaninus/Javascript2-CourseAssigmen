@@ -11900,6 +11900,25 @@ textarea.form-control-lg {
   display: none;
 }
 
+.danger-card {
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  margin-top: 10px;
+  color: #fff;
+  display: none;
+}
+
+.danger-card p {
+  margin-left: 10px;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.warning-icon {
+  height: 20px;
+}
+
 .feed-head {
   min-height: 232px;
   background-size: cover;
