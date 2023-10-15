@@ -1,2 +1,3 @@
 # Javascript 2 - Course assigment
-Replace this text with a description of your social media project.
+Trello: 
+https://trello.com/b/H3ydrc4r/javascript-2-ca
