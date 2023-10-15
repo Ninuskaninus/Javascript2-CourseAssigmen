@@ -3,16 +3,23 @@ import { fetchFollowing } from "/js/API/get/myProfile.js";
 const username = await getUsername();
 const following = await fetchFollowing();
 const isFollowing = following.some((followed) => followed.name === username);
-console.log(isFollowing);
 
 const followBtn = document.getElementById("follow-btn");
 followBtn.innerHTML = "Follow";
 followBtn.style.display = isFollowing ? "none" : "block";
+if (username === localStorage.getItem("username")) {
+  followBtn.style.display = "none";
+}
 
 const unfollowBtn = document.getElementById("unfollow-btn");
 unfollowBtn.innerHTML = "Unfollow";
 unfollowBtn.style.display = isFollowing ? "block" : "none";
 
+/**
+ * Sends a PUT request to follow a user's profile.
+ * @function
+ * @returns {void}
+ */
 export function apiPostFollow() {
   followBtn.addEventListener("click", async () => {
     const url =

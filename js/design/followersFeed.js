@@ -7,6 +7,12 @@ const myProfile = await fetchMyProfile();
 const followers = await fetchFollowers();
 const following = await fetchFollowing();
 
+/**
+ * Inserts a container for followers and following in the DOM.
+ * @function
+ * @name insertFollowerContainerFeed
+ * @returns {void}
+ */
 export function insertFollowerContainerFeed() {
   //Followers
   const followersContainer = document.getElementById("followers-container");

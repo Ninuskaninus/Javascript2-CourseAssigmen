@@ -4,6 +4,10 @@ const url = "https://api.noroff.dev/api/v1/social/profiles/" + username;
 const JWT = localStorage.getItem("accessToken");
 const posts = url + "/posts";
 
+/**
+ * Fetches the user profile data from the server.
+ * @returns {Promise<Object>} A promise that resolves to an object containing the user profile data.
+ */
 export async function fetchProfile() {
   return fetch(url, {
     headers: {

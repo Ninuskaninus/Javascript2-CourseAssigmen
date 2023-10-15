@@ -1,3 +1,8 @@
+/**
+ * Edits a post by sending a PUT request to the API with the updated post body.
+ * @param {Event} event - The event object that triggered the function.
+ * @returns {Promise<void>} - A Promise that resolves when the post has been successfully updated.
+ */
 export async function editPost(event) {
     const thisPostId = event.target.closest(".feedCard").id;
     const edit_url = `https://api.noroff.dev/api/v1/social/posts/${thisPostId}`;

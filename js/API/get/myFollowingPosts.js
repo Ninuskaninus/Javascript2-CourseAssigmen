@@ -2,6 +2,27 @@ const posts_url =
   "https://api.noroff.dev/api/v1/social/posts/following?_author=true&_comments=true&_reactions=true";
 const JWT = localStorage.getItem("accessToken");
 
+/**
+ * Fetches the posts of the user's followers.
+ *
+ * @async
+ * @function fetchMyFollowersPosts
+ * @returns {Promise<Array<Object>>} An array of objects representing the posts of the user's followers.
+ * Each object contains the following properties:
+ * - title: The title of the post.
+ * - created: The formatted date when the post was created.
+ * - id: The ID of the post.
+ * - pictureUpload: The media uploaded with the post.
+ * - tags: An array of tags associated with the post.
+ * - body: The body of the post.
+ * - updated: The formatted date when the post was last updated.
+ * - likes: The number of likes the post has received.
+ * - comments: The number of comments the post has received.
+ * - avatar: The URL of the author's avatar.
+ * - username: The name of the author.
+ * - posts: An array of posts associated with the post.
+ * - commentPost: An array of comments associated with the post.
+ */
 export async function fetchMyFollowersPosts() {
   return fetch(posts_url, {
     headers: {

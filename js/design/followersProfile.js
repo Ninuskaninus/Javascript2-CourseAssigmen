@@ -5,6 +5,12 @@ import {
 const followers = await fetchAllUserFollowers();
 const following = await fetchAllUserFollowing();
 
+/**
+ * Inserts a container for followers and following profiles.
+ * @function
+ * @name insertFollowerContainerProfile
+ * @returns {void}
+ */
 export function insertFollowerContainerProfile() {
   //Followers
   const followersContainer = document.getElementById("followers-container");
@@ -67,7 +73,7 @@ export function insertFollowerContainerProfile() {
 
   following.forEach((following) => {
     const linkFollowing = document.createElement("a");
-    linkFollowing.classList.add("col-sm-2", "me-1");
+    linkFollowing.classList.add("col-sm-2", "me-1", "col-1");
     linkFollowing.href = "/profile/index.html?username=" + following.name;
     const followingIcon = document.createElement("img");
     followingIcon.classList.add("rounded-circle", "p-0", "border", "m-1");

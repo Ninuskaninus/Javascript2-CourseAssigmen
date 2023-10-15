@@ -1,6 +1,11 @@
 import { fetchAllPosts } from "/js/API/get/allPosts.js";
 const allPosts = await fetchAllPosts();
 
+/**
+ * Creates a like button for a post and returns the button element.
+ * @param {Object} allPosts - An object containing information about the post.
+ * @returns {HTMLImageElement} - The like button element.
+ */
 export function createLikeButton(allPosts) {
   const cardTextBottomIcons = document.createElement("div");
   cardTextBottomIcons.classList.add(

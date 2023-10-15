@@ -1,7 +1,6 @@
 import { fetchAllPosts } from "/js/API/get/allPosts.js";
 import { fetchMyProfile, fetchMyPosts } from "/js/API/get/myProfile.js";
 import { updateMyProfileHead } from "/js/design/myProfileHead.js";
-import { updateNavbarProfile } from "/js/design/navbar_profile.js";
 import { insertFollowerContainerFeed } from "/js/design/followersFeed.js";
 import { uploadContainer } from "/js/design/upload_container.js";
 import { createFeedCard } from "/js/design/create-feed.card.js";
@@ -13,6 +12,7 @@ import { fetchMyFollowersPosts } from "/js/API/get/myFollowingPosts.js";
 import { searchBarContainer } from "/js/design/searchbar.js";
 import { searchFunction } from "/js/modals/searchFunction.js";
 import { filterMyPosts} from "/js/modals/sortMyPosts.js"
+import { navBar } from "/js/design/navigation.js";
 
 
 const myProfile = await fetchMyProfile();
@@ -23,6 +23,7 @@ const myPosts = await fetchMyPosts();
 // Containers
 const feedContainer = document.getElementById("feed-container");
 const feedHeadContainer = document.getElementById("feed-head-container");
+navBar();
 
 // Upload container
 uploadContainer(feedHeadContainer);
@@ -31,7 +32,7 @@ apiPostNewPost();
 
 // Shown profile
 updateMyProfileHead(myProfile);
-updateNavbarProfile(myProfile);
+
 
 // Followers container
 insertFollowerContainerFeed();

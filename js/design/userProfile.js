@@ -1,5 +1,4 @@
-import { fetchMyProfile, fetchFollowing } from "/js/API/get/myProfile.js";
-import { updateNavbarProfile } from "/js/design/navbar_profile.js";
+import { fetchMyProfile } from "/js/API/get/myProfile.js";
 import { insertFollowerContainerProfile } from "/js/design/followersProfile.js";
 import { updateUserProfileHead } from "/js/design/userProfileHead.js";
 import { fetchPosts } from "/js/API/get/allProfiles.js";
@@ -7,6 +6,8 @@ import { apiPostFollow } from "/js/API/put/follow.js";
 import { apiPostUnfollow } from "/js/API/put/unfollow.js";
 import { getUsername } from "/js/API/get/getUsername.js";
 import { imageModal } from "/js/modals/image-modal.js";
+import { navBar } from "/js/design/navigation.js";
+
 const myPosts = await fetchPosts();
 const myProfile = await fetchMyProfile();
 const username = await getUsername();
@@ -14,8 +15,8 @@ const username = await getUsername();
 apiPostFollow();
 apiPostUnfollow();
 updateUserProfileHead(myProfile);
-updateNavbarProfile(myProfile);
 insertFollowerContainerProfile();
+navBar();
 
 const profileContainer = document.getElementById("profile-container");
 const profileHead = document.createElement("div");

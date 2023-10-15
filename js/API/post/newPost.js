@@ -1,3 +1,8 @@
+/**
+ * Sends a POST request to create a new post on the social media platform.
+ * @function
+ * @returns {void}
+ */
 export function apiPostNewPost() {
   const base_url = "https://api.noroff.dev/api/v1/social/posts";
   const accessToken = localStorage.getItem("accessToken");

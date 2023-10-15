@@ -7,11 +7,22 @@ const isFollowing = following.some((followed) => followed.name === username);
 const followBtn = document.getElementById("follow-btn");
 followBtn.innerHTML = "Follow";
 followBtn.style.display = isFollowing ? "none" : "block";
+if (username === localStorage.getItem("username")) {
+  followBtn.style.display = "none";
+}
 
 const unfollowBtn = document.getElementById("unfollow-btn");
 unfollowBtn.innerHTML = "Unfollow";
 unfollowBtn.style.display = isFollowing ? "block" : "none";
+if (username === localStorage.getItem("username")) {
+  unfollowBtn.style.display = "none";
+}
 
+/**
+ * Sends a PUT request to the API to unfollow a user.
+ * @function
+ * @returns {void}
+ */
 export function apiPostUnfollow() {
   unfollowBtn.addEventListener("click", async () => {
     const url =
@@ -31,7 +42,6 @@ export function apiPostUnfollow() {
     fetch(url, options)
       .then((response) => response.json())
       .then((data) => {
-
         if (data) {
           unfollowBtn.style.display = "none";
           followBtn.style.display = "block";

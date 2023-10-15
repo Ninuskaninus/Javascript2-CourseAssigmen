@@ -4,7 +4,7 @@ const myProfile = await fetchMyProfile();
 export function uploadContainer() {
   const feedHeadContainer = document.getElementById("feed-head-container");
   const uploadContainer = document.createElement("div");
-  uploadContainer.classList.add("card", "mb-4");
+  uploadContainer.classList.add("card", "mb-4", "w-100", "container");
   feedHeadContainer.appendChild(uploadContainer);
 
   const uploadHead = document.createElement("div");
