@@ -23,7 +23,7 @@ export function userCard(userInfo) {
 
     const userNameInfo = document.createElement("h4");
     userNameInfo.classList.add("nametag");
-    userNameInfo.innerText = userInfo.name || "Username not found"; // Display "User Name not found" if the name is not present
+    userNameInfo.innerText = userInfo.name || "Username not found";
     userCardInfoContainer.appendChild(userNameInfo);
 
     const userButton = document.createElement("a");

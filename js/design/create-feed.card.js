@@ -34,6 +34,7 @@ export function createFeedCard(allPosts) {
   );
   cardProfilePic.src = allPosts.avatar;
   cardTextTop.appendChild(cardProfilePic);
+
   if (allPosts.avatar && allPosts.avatar.trim() !== "") {
     cardProfilePic.src = allPosts.avatar;
   } else {
@@ -335,5 +336,3 @@ export function createFeedCard(allPosts) {
 
   return feedCard;
 }
-
-

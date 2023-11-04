@@ -5,7 +5,6 @@ const JWT = localStorage.getItem("accessToken");
 /**
  * Fetches the posts of the user's followers.
  *
- * @async
  * @function fetchMyFollowersPosts
  * @returns {Promise<Array<Object>>} An array of objects representing the posts of the user's followers.
  * Each object contains the following properties:
@@ -23,7 +22,7 @@ const JWT = localStorage.getItem("accessToken");
  * - posts: An array of posts associated with the post.
  * - commentPost: An array of comments associated with the post.
  */
-export async function fetchMyFollowersPosts() {
+export function fetchMyFollowersPosts() {
   return fetch(posts_url, {
     headers: {
       Authorization: `Bearer ${JWT}`,

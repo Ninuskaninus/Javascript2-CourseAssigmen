@@ -5,11 +5,10 @@ const JWT = localStorage.getItem("accessToken");
 /**
  * Fetches all posts from the API.
  *
- * @async
  * @function fetchAllPosts
  * @returns {Promise<Array>} An array of post objects.
  */
-export async function fetchAllPosts() {
+export function fetchAllPosts() {
   return fetch(apiURL, {
     headers: {
       Authorization: `Bearer ${JWT}`,
@@ -57,7 +56,6 @@ export async function fetchAllPosts() {
             username: post.author.name,
             posts: post.posts,
             commentPost: post.comments,
-
           };
         });
         return myPosts;
