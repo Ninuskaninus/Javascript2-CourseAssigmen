@@ -1,5 +1,6 @@
-const base_url =
-  "https://api.noroff.dev/api/v1/social/posts?_author=true&_comments=true";
+const base_url = "https://api.noroff.dev/api/v1/social/posts";
+const endpoint_url = "?_author=true&_comments=true";
+const url = base_url + endpoint_url;
 const JWT = localStorage.getItem("accessToken");
 
 /**
@@ -7,7 +8,7 @@ const JWT = localStorage.getItem("accessToken");
  * @returns {Promise<Array<Object>>} A promise that resolves to an array of comment objects.
  */
 export function getComment() {
-  return fetch(base_url, {
+  return fetch(url, {
     headers: {
       Authorization: `Bearer ${JWT}`,
     },

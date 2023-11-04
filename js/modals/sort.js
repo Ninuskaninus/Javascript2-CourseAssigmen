@@ -45,7 +45,7 @@ export function sortMyPosts() {
 
   const sortText = document.createElement("h6");
   sortText.classList.add("nametag");
-  sortText.textContent = "Show my posts only";
+  sortText.textContent = "Edit my posts";
   sortRow.appendChild(sortText);
 
   const checkboxContainer = document.createElement("div");

@@ -8,7 +8,7 @@ const posts = url + "/posts";
  * Fetches the user profile data from the server.
  * @returns {Promise<Object>} A promise that resolves to an object containing the user profile data.
  */
-export async function fetchProfile() {
+export function fetchProfile() {
   return fetch(url, {
     headers: {
       Authorization: `Bearer ${JWT}`,
@@ -31,7 +31,7 @@ export async function fetchProfile() {
     });
 }
 
-export async function fetchPosts() {
+export function fetchPosts() {
   return fetch(posts, {
     headers: {
       Authorization: `Bearer ${JWT}`,

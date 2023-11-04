@@ -9,11 +9,10 @@ const JWT = localStorage.getItem("accessToken");
 /**
  * Fetches all followers for a user.
  *
- * @async
  * @function
  * @returns {Promise<Array<{name: string, avatar: string}>>} An array of objects containing the name and avatar of each follower.
  */
-export async function fetchAllUserFollowers() {
+export function fetchAllUserFollowers() {
   return fetch(url, {
     headers: {
       Authorization: `Bearer ${JWT}`,
@@ -42,11 +41,10 @@ fetchAllUserFollowers();
 /**
  * Fetches all the users that the current user is following.
  *
- * @async
  * @function fetchAllUserFollowing
  * @returns {Promise<Array<{name: string, avatar: string}>>} An array of objects containing the name and avatar of each user that the current user is following.
  */
-export async function fetchAllUserFollowing() {
+export function fetchAllUserFollowing() {
   return fetch(url, {
     headers: {
       Authorization: `Bearer ${JWT}`,

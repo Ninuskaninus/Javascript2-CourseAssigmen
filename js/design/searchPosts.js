@@ -1,4 +1,4 @@
-export function searchBarContainer(feedHeadContainer) {
+export function searchBarContainerPosts(feedHeadContainer) {
   const searchBarContainer = document.createElement("div");
   searchBarContainer.classList.add("card", "mb-2");
   feedHeadContainer.appendChild(searchBarContainer);
@@ -6,14 +6,14 @@ export function searchBarContainer(feedHeadContainer) {
   const searchBarForm = document.createElement("form");
   searchBarForm.classList.add("search-form");
   searchBarForm.action = "#";
-  searchBarForm.id = "searchbar-form";
+  searchBarForm.id = "searchbarPost-form";
   searchBarContainer.appendChild(searchBarForm);
 
   const searchBarInput = document.createElement("input");
   searchBarInput.classList.add("searchbar", "w-100");
   searchBarInput.type = "text";
-  searchBarInput.placeholder = "Search for user";
-  searchBarInput.id = "searchbar-input";
+  searchBarInput.placeholder = "Search for posts";
+  searchBarInput.id = "searchbar-input-posts";
   searchBarForm.appendChild(searchBarInput);
 
   const searchBarButton = document.createElement("button");

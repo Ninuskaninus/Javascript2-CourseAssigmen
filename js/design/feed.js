@@ -11,14 +11,15 @@ import { sortFunction, myPostsSort } from "/js/modals/sortFunction.js";
 import { fetchMyFollowersPosts } from "/js/API/get/myFollowingPosts.js";
 import { searchBarContainer } from "/js/design/searchbar.js";
 import { searchFunction } from "/js/modals/searchFunction.js";
-import { filterMyPosts} from "/js/modals/sortMyPosts.js"
+import { filterMyPosts } from "/js/modals/sortMyPosts.js";
 import { navBar } from "/js/design/navigation.js";
-
+import { searchBarContainerPosts } from "/js/design/searchPosts.js";
+import { searchPostFunction } from "/js/modals/searchFunction.js";
 
 const myProfile = await fetchMyProfile();
 const allPosts = await fetchAllPosts();
 const followingPosts = await fetchMyFollowersPosts();
-const myPosts = await fetchMyPosts(); 
+const myPosts = await fetchMyPosts();
 
 // Containers
 const feedContainer = document.getElementById("feed-container");
@@ -29,10 +30,8 @@ navBar();
 uploadContainer(feedHeadContainer);
 apiPostNewPost();
 
-
 // Shown profile
 updateMyProfileHead(myProfile);
-
 
 // Followers container
 insertFollowerContainerFeed();
@@ -42,11 +41,19 @@ filterMyPosts();
 sortPosts(feedHeadContainer);
 sortMyPosts(feedHeadContainer);
 
-myPostsSort(feedHeadContainer, allPosts, createFeedCard, myPosts, feedContainer, myProfile);
+myPostsSort(
+  feedHeadContainer,
+  allPosts,
+  createFeedCard,
+  myPosts,
+  feedContainer,
+  myProfile
+);
 sortFunction(feedContainer, allPosts, followingPosts, createFeedCard);
 searchBarContainer(feedHeadContainer);
 searchFunction(feedHeadContainer, allPosts, followingPosts, createFeedCard);
-
+searchBarContainerPosts(feedHeadContainer);
+searchPostFunction(feedHeadContainer, allPosts, followingPosts, createFeedCard);
 
 allPosts.forEach((post) => {
   const feedCard = createFeedCard(post);
@@ -55,4 +62,3 @@ allPosts.forEach((post) => {
 
 // Reactions
 commentContainer();
-
