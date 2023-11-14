@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/sasstrapfav.png">
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <title>SassTrap | Profile</title>
+  </head>
+  <body class="feed-body">
+    <nav class="navbar navbar-expand-md dropshadow" id="navigation"></nav>
+    <div class="container p-3 pt-0" id="content-container">
+      <div id="header-container">
+        <div
+          class="container w-100 p-0 m-0 feed-head d-flex justify-content-center position-relative profile-head-img"
+          id="head-img"
+        >
+          <img
+            class="edit-banner"
+            id="edit-banner-btn"
+            src="/img/edit.png"
+            alt=""
+          />
+          <div class="edit-form-container" id="form-container">
+            <div>
+              <form method="put" class="banner-update" id="banner-form">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="banner-input"
+                  placeholder="Update banner image"
+                />
+                <button
+                  id="banner-update-btn"
+                  class="primary-btn btn banner-update-btn"
+                  action="submit"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+            <div>
+              <form method="put" class="profile-update" id="image-form">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="image-input"
+                  placeholder="Update profile image"
+                />
+                <button
+                  id="image-update-btn"
+                  class="primary-btn btn image-update-btn"
+                  action="submit"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+          <img
+            src=""
+            alt=""
+            class="rounded-circle profile-pic position-absolute"
+            height="176px"
+            width="176px"
+            object-fit="cover"
+            id="profile-pic"
+          />
+        </div>
+        <div
+          class="container w-100 p-0 mb-5 feed-head-text justify-content-center align-items-center d-flex flex-column"
+        >
+          <div class="row w-100">
+            <div
+              class="col-sm pt-5 d-flex align-items-end justify-content-center"
+            >
+              <div class="row p-2">
+                <div class="col pl-2 m-0 following-container">
+                  <p class="m-0 text-center">
+                    Followers <b id="followers"></b>
+                  </p>
+                </div>
+                <div class="col pl-3 m-0 following-container">
+                  <p class="m-0 text-center">
+                    Following <b id="following"></b>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm mt-5" id="name-container">
+              <h4 class="text-center font-weight-bold" id="full-name"></h4>
+              <h6 class="text-center nametag" id="username"></h6>
+            </div>
+            <div
+              class="col-sm d-flex align-items-end justify-content-center pt-2 mb-2"
+            >
+              <div class="row p-2">
+                <div class="col"><img src="/img/github.png" alt="" /></div>
+                <div class="col"><img src="/img/facebook.png" alt="" /></div>
+                <div class="col"><img src="/img/instagram.png" alt="" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container row d-flex p-0 m-0">
+        <div class="container row w-100 p-0 m-0 mb-4" id="side-container">
+          <div
+            class="container col w-50 follower-container m-0 p-0 me-2"
+            id="followers-container"
+          ></div>
+          <div
+            class="container col w-50 follower-container m-0 p-0"
+            id="following-container"
+          ></div>
+        </div>
+        <div
+          class="container card dropshadow p-0 w-100 m-0"
+          id="profile-container"
+        ></div>
+      </div>
+    </div>
+    <div class="image-modal-container" id="image-modal">
+      <img class="image-modal-content" id="modal-img" />
+    </div>
+    <script type="module" src="/js/design/myProfilePage.js"></script>
+  </body>
+</html>

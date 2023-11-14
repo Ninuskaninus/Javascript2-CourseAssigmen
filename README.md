@@ -1,2 +1,3 @@
-# css-frameworks-ca
-Replace this text with a description of your social media project.
+# Javascript 2 - Course assigment
+Trello: 
+https://trello.com/b/H3ydrc4r/javascript-2-ca

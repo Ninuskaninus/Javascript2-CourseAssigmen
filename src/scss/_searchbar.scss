@@ -1,0 +1,63 @@
+.searchbar{
+    border: $pink 1px solid;
+    padding: 10px 10px 10px 20px;
+    border-radius: 20px;
+    padding: 5px;
+    height: 30px;
+    font-size: 13px;
+    &:focus{
+        outline: none;
+        border: $pink 2px solid;
+    }
+}
+
+.search-form{
+    padding: 10px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.searchbutton{
+    min-width: 30px;
+    min-height: 30px;
+    padding: 0;
+    border-radius: 100%;
+    margin-left: 5px;
+    &:hover{
+        background-color: $red;
+    }
+}
+
+.search-icon{
+    width: 20px;
+    height: 20px;
+}
+
+.profile-card-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    max-width: 100%;
+}
+
+.profile-card-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 10px;
+    border: $pink 1px solid;
+}
+
+.follower-card-profile{
+    padding: 0;
+    margin: 0;
+}
+
+.follow-user-btn{
+    max-width: fit-content;
+}
+
+
+

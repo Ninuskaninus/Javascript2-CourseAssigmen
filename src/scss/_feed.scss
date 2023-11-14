@@ -4,6 +4,10 @@
   background-position: center;
 }
 
+.mainContainer {
+  max-width: 100%;
+}
+
 .feed-head-text {
   min-height: 133px;
   border-radius: 0px 0px 20px 20px;
@@ -29,6 +33,12 @@
 
 .nametag {
   color: $pink;
+  margin-bottom: 0;
+}
+
+.card-id {
+  color: $gray-400;
+  margin-top: 0;
 }
 
 .feed-body {
@@ -38,6 +48,8 @@
 .card-profile {
   max-height: 50px;
   max-width: 50px;
+  min-height: 50px;
+  min-width: 50px;
   object-fit: cover;
 }
 
@@ -81,7 +93,7 @@ header {
   }
 }
 
-.submit-btn{
+.submit-btn {
   background-color: $pink;
   color: $white;
   border: none;
@@ -91,7 +103,21 @@ header {
   }
 }
 
-.comment-container{
+.banner-update-btn,
+.image-update-btn {
+  background-color: $pink;
+  color: $white;
+  border: none;
+  margin-left: 10px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: $pink;
+  }
+}
+
+.comment-container {
   background-color: $white;
   border-radius: 20px;
   &:focus {
@@ -99,18 +125,227 @@ header {
   }
 }
 
-.comment-input{
+.comment-input {
   border: none;
   &:focus {
     outline: none;
   }
 }
 
-.comment-btn{
+.comment-btn {
   background-color: $pink;
   color: $white;
   border: none;
   &:focus {
     outline: none;
   }
+}
+
+.response-icon {
+  max-width: 30px;
+  max-height: 30px;
+  object-fit: cover;
+}
+
+.icons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  align-items: center;
+  margin: 0px;
+}
+
+.feedCard {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 999;
+}
+
+.edit-banner,
+.edit-image {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 999;
+  max-width: 30px;
+  max-height: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.banner-update {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  position: absolute;
+  top: 15px;
+  right: 60px;
+}
+
+.profile-update {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  position: absolute;
+  top: 60px;
+  right: 60px;
+}
+
+.edit-form-container {
+  display: none;
+}
+
+.edit-button {
+  position: absolute;
+  right: 30px;
+}
+
+.edit-menu-container {
+  background-color: white;
+  height: fit-content;
+  width: 150px;
+  z-index: 100;
+  position: absolute;
+  display: none;
+  right: 30px;
+  top: 50px;
+  padding: 0;
+}
+
+.edit-menu {
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  padding-left: 10px;
+  &:hover {
+    background-color: $primary;
+    color: $white;
+  }
+}
+
+.warning-box-container {
+  min-width: 100%;
+  min-height: 100%;
+  background-color: #33333356;
+  position: absolute;
+  top: 0;
+  border-radius: 20px;
+  display: none;
+  z-index: 2002;
+}
+
+.warning-box {
+  background-color: white;
+  border-radius: 20px;
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.yes-button,
+.no-button {
+  background-color: $primary;
+  color: $white;
+  min-width: 80px;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  &:hover {
+    cursor: pointer;
+    background-color: $red;
+  }
+}
+
+.edit-post-container {
+  min-width: 100%;
+  max-height: 40%;
+  background-color: #33333356;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+  display: none;
+  z-index: 101;
+}
+
+.edit-post-input {
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: $pink 1px solid;
+  border-radius: 20px;
+  padding: 10px;
+  &:focus {
+    outline: none;
+  }
+}
+
+.edit-post-button {
+  z-index: 102;
+  background-color: $primary;
+  color: $white;
+  min-width: 80px;
+  min-height: 100%;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  right: 0;
+}
+
+.delete-img-icon-container {
+  min-height: 50px;
+  width: 100%;
+  position: absolute;
+  top: 112px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-img-icon {
+  max-width: 20px;
+  max-height: 20px;
+  object-fit: cover;
+  margin: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.module-handler {
+  min-height: 85px;
+  bottom: 0;
+  min-width: 100%;
+  background-color: transparent;
+  position: absolute;
+  z-index: 2000;
 }
